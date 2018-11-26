@@ -15,9 +15,32 @@ var id;
 var key;
 
 /**홈/케이스  */
+function initHomeTitle() {
+	var ref = db.ref("root/home/title");
+	ref.on("child_added", homeTitleAdd);
+    ref.on("child_changed", homeTitleAdd);
+}
+function homeTitleAdd(data) {
+    $("#top_title").val(data.val());
+    $("#case_top_title").html(data.val());
+}
+initHomeTitle();
+
+function initHomeTitle2() {
+	var ref = db.ref("root/home2/title");
+	ref.on("child_added", homeTitleAdd2);
+    ref.on("child_changed", homeTitleAdd2);
+}
+function homeTitleAdd2(data) {
+    $("#bot_title").val(data.val());
+    $("#case_bot_title").html(data.val());
+}
+initHomeTitle2();
+
+
 function initHome() {
-	$(".home_ul >li").remove();
-	ref = db.ref("root/home/");
+	$("#case_index > .home_ul > li").remove();
+	var ref = db.ref("root/home/list");
 	ref.on("child_added", homeAdd);
 	ref.on("child_removed", homeRev);
     ref.on("child_changed", homeChg);
@@ -25,8 +48,8 @@ function initHome() {
 initHome();
 
 function initHome2() {
-	$(".home_ul >li").remove();
-	ref = db.ref("root/home2/");
+	$("#case_bot_index > .home_ul > li").remove();
+	var ref = db.ref("root/home2/list");
 	ref.on("child_added", homeAdd2);
 	ref.on("child_removed", homeRev2);
     ref.on("child_changed", homeChg2);
@@ -34,26 +57,20 @@ function initHome2() {
 initHome2();
 
 
+
+
 /*생성*/
 function homeAdd(data) {
-if(data.val().toptitle){
-    homeTop();
+    homeMake(data, $("#case_index"));
 }
-else{ homeMake();}
-}
-
 function homeAdd2(data) {
-    if(data.val().bottitle){
-        homeBot();
-    }
-    else{ homebotMake();}
-    }
+    homeMake(data, $("#case_bot_index"));
+}
 
 /**리스트 */
-function homeMake(data){
+function homeMake(data, parent){
  
     var id = data.key;
-    // ref=db.ref("root/home/");
     var html = '';
     html += '<ul class="case_ul clear home_ul" id="' + id + '">';
     html += '<li class="case_ti"><input type="text" class="case_input case_title"   placeholder="타이틀" value="' + data.val().title + '"></li>';
@@ -66,9 +83,10 @@ function homeMake(data){
     html += '<button class="case_bt home_re"  onclick="homeUp(this);">수정</button>';
     html+='</li>'
     html += '</ul>';
-    $("#case_index").append(html);
+    parent.append(html);
 }
 
+/*
 function homebotMake(data){    
     var id = data.key;
     var html = '';
@@ -85,7 +103,7 @@ function homebotMake(data){
     html += '</ul>';
     $("#case_bot_index").append(html);
 };
-
+*/
 
 /**제목 생성*/
 function homeTop(data){
@@ -121,7 +139,7 @@ function homeBot(data){
 /***저장 등록 */
 
 $("#home_save").click(function(){
-    ref = db.ref("root/home/");
+    ref = db.ref("root/home/list");
     // var ul = $(this).parent().parent();
     var title = $("#title").val();
     var link = $("#link").val();
@@ -141,19 +159,19 @@ $("#home_save").click(function(){
 
 /**아래 카테고리 */
 $("#homebot_save").click(function(){
-    ref = db.ref("root/home2/");
+    ref = db.ref("root/home2/list");
     // var ul = $(this).parent().parent();
-    var hbtitle = $("#hb_title").val();
-    var hblink = $("#hb_link").val();
-    if(hbtitle == "" || hblink == ""){
+    var title = $("#hb_title").val();
+    var link = $("#hb_link").val();
+    if(title == "" || link == ""){
         alert("내용을 입력하세요.");
         return false;
     }
     else{
         ref.push({
-            hbtitle : hbtitle,
-            hblink: hblink,
-            hbwdate : new Date().getTime()
+            title : title,
+            link: link,
+            wdate : new Date().getTime()
         }).key;
         alert("등록되었습니다.");
     }
@@ -162,34 +180,33 @@ $("#homebot_save").click(function(){
 
 /** 제목 클릭저장**/
 $("#top_save").click(function(){
-    ref = db.ref("root/home/");
+    ref = db.ref("root/home/title");
     var toptitle = $("#top_title").val();
     if(toptitle == ""){
         alert("내용을 입력하세요");
         return false;
     }
     else{
-        ref.push({
+        ref.update({
             toptitle : toptitle
-        }).key;
-        alert("등록되었습니다.")
-        $("#top_save").css({"display":"none"});
+        });
+        alert("등록되었습니다.");
     }
 });
 
+
 $("#bot_save").click(function(){
-    ref= db.ref("root/home2/");
+    ref= db.ref("root/home2/title");
     var bottitle = $("#bot_title").val();
     if(bottitle == ""){
         alert("내용을 입력하세요");
         return false;
     }
     else{
-        ref.push({
+        ref.update({
             bottitle : bottitle
-        }).key;
-        alert("등록되었습니다.")
-        $("#bot_save").css({"display":"none"});
+        });
+        alert("등록되었습니다.");
     }
 });
 
