@@ -1,52 +1,25 @@
-[debug] [2018-11-26T00:51:57.344Z] ----------------------------------------------------------------------
-[debug] [2018-11-26T00:51:57.352Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\라윤혜\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-11-26T00:51:57.352Z] CLI Version:   4.2.1
-[debug] [2018-11-26T00:51:57.352Z] Platform:      win32
-[debug] [2018-11-26T00:51:57.352Z] Node Version:  v8.12.0
-[debug] [2018-11-26T00:51:57.360Z] Time:          Mon Nov 26 2018 09:51:57 GMT+0900 (대한민국 표준시)
-[debug] [2018-11-26T00:51:57.360Z] ----------------------------------------------------------------------
+[debug] [2018-11-26T02:31:59.925Z] ----------------------------------------------------------------------
+[debug] [2018-11-26T02:31:59.931Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-11-26T02:31:59.932Z] CLI Version:   5.1.1
+[debug] [2018-11-26T02:31:59.932Z] Platform:      win32
+[debug] [2018-11-26T02:31:59.932Z] Node Version:  v8.12.0
+[debug] [2018-11-26T02:31:59.935Z] Time:          Mon Nov 26 2018 11:31:59 GMT+0900 (대한민국 표준시)
+[debug] [2018-11-26T02:31:59.935Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-11-26T00:51:57.416Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-26T00:51:57.416Z] > authorizing via signed-in user
-[debug] [2018-11-26T00:51:57.424Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-11-26T00:51:57.424Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2018-11-26T02:31:59.962Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-26T02:31:59.963Z] > authorizing via signed-in user
+[debug] [2018-11-26T02:31:59.963Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
+[debug] [2018-11-26T02:31:59.969Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
 
-[debug] [2018-11-26T00:51:58.264Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-26T00:51:58.288Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yune-puppy  
+[debug] [2018-11-26T02:32:01.547Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-26T02:32:01.554Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
  
-[debug] [2018-11-26T00:51:59.868Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-26T00:51:59.872Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
- 
-[debug] [2018-11-26T00:52:01.652Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-26T02:32:01.940Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from 'C:\Users\라윤혜\Desktop\fbroot\puppy'...
+[info] === Serving from 'D:\fbroot\puppy'...
 [info] 
-[debug] [2018-11-26T00:52:01.660Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
+[debug] [2018-11-26T02:32:01.961Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
  
-[debug] [2018-11-26T00:52:02.825Z] <<< HTTP RESPONSE 200
-[info] i  hosting[yune-puppy]: Serving hosting files from: public
-[info] +  hosting[yune-puppy]: Local server: http://localhost:5000
-[debug] [2018-11-26T01:07:48.511Z] ----------------------------------------------------------------------
-[debug] [2018-11-26T01:07:48.529Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\라윤혜\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-11-26T01:07:48.530Z] CLI Version:   4.2.1
-[debug] [2018-11-26T01:07:48.530Z] Platform:      win32
-[debug] [2018-11-26T01:07:48.532Z] Node Version:  v8.12.0
-[debug] [2018-11-26T01:07:48.536Z] Time:          Mon Nov 26 2018 10:07:48 GMT+0900 (대한민국 표준시)
-[debug] [2018-11-26T01:07:48.536Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2018-11-26T01:07:48.631Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-26T01:07:48.636Z] > authorizing via signed-in user
-[debug] [2018-11-26T01:07:48.645Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yune-puppy  
- 
-[debug] [2018-11-26T01:07:50.461Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-26T01:07:50.467Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
- 
-[debug] [2018-11-26T01:07:51.970Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from 'C:\Users\라윤혜\Desktop\fbroot\puppy'...
-[info] 
-[debug] [2018-11-26T01:07:52.037Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
- 
-[debug] [2018-11-26T01:07:52.952Z] <<< HTTP RESPONSE 200
-[info] i  hosting[yune-puppy]: Serving hosting files from: public
-[info] +  hosting[yune-puppy]: Local server: http://localhost:5000
+[debug] [2018-11-26T02:32:02.797Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000

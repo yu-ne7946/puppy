@@ -23,6 +23,7 @@ function initHome() {
     ref.on("child_changed", homeChg);
 }
 initHome();
+
 function initHome2() {
 	$(".home_ul >li").remove();
 	ref = db.ref("root/home2/");
@@ -35,18 +36,18 @@ initHome2();
 
 /*생성*/
 function homeAdd(data) {
-    
-    if(data.val().toptitle){
-        homeTop(data);
+if(data.val().toptitle){
+    homeTop();
+}
+else{ homeMake();}
+}
+
+function homeAdd2(data) {
+    if(data.val().bottitle){
+        homeBot();
     }
-    else if(data.val().bottitle){
-        homeBot(data);
+    else{ homebotMake();}
     }
-    else if(data.val().title){
-          homeMake(data);
-    }
-    else{homebotMake(data);}
-};
 
 /**리스트 */
 function homeMake(data){
@@ -78,15 +79,15 @@ function homebotMake(data){
     html +='</li>';
     html += '<li class="case_time">'+data.val().hbwdate+'</li>';
     html += '<li class="case_bt_li">';
-    html += '<button class="case_bt home_del" onclick="homeDel(this);">삭제</button>';
-    html += '<button class="case_bt home_re"  onclick="homeUp(this);">수정</button>';
+    html += '<button class="case_bt home_del" onclick="homeDel2(this);">삭제</button>';
+    html += '<button class="case_bt home_re"  onclick="homeUp2(this);">수정</button>';
     html+='</li>'
     html += '</ul>';
     $("#case_bot_index").append(html);
 };
 
 
-/**제목 */
+/**제목 생성*/
 function homeTop(data){
     var id = data.key;
     var tophtml = '';
@@ -103,8 +104,17 @@ function homeTop(data){
 }
 
 function homeBot(data){
+    var id = data.key;
     var bothtml = '';
-    bothtml +='<h3>'+data.val().bottitle+'</h3>';
+    bothtml += '<ul class="hometop_ul clear" id="' + id + '">';
+    bothtml += '<li class="hometop_li">';
+    bothtml += '<input type="text" class="hometop" placeholder="카테고리제목" value="' + data.val().bottitle + '"></input>'
+    bothtml += '</li>';
+    bothtml += '<li class="hometop_li">';
+    bothtml += '<button class="hometop_del" onclick="homebotDel(this);">삭제</button>';
+    bothtml += '<button class="hometop_re" onclick="homebotUp(this);">수정</button>';
+    bothtml += '</li>';
+    bothtml += '</ul>';
     $("#case_bot_title").append(bothtml);
 };
 
@@ -131,7 +141,7 @@ $("#home_save").click(function(){
 
 /**아래 카테고리 */
 $("#homebot_save").click(function(){
-    ref = db.ref("root/home/");
+    ref = db.ref("root/home2/");
     // var ul = $(this).parent().parent();
     var hbtitle = $("#hb_title").val();
     var hblink = $("#hb_link").val();
@@ -143,14 +153,14 @@ $("#homebot_save").click(function(){
         ref.push({
             hbtitle : hbtitle,
             hblink: hblink,
-            wdate : new Date().getTime()
+            hbwdate : new Date().getTime()
         }).key;
         alert("등록되었습니다.");
     }
 });
 
 
-/** 제목 생성**/
+/** 제목 클릭저장**/
 $("#top_save").click(function(){
     ref = db.ref("root/home/");
     var toptitle = $("#top_title").val();
@@ -168,7 +178,7 @@ $("#top_save").click(function(){
 });
 
 $("#bot_save").click(function(){
-    ref= db.ref("root/home/");
+    ref= db.ref("root/home2/");
     var bottitle = $("#bot_title").val();
     if(bottitle == ""){
         alert("내용을 입력하세요");
@@ -179,12 +189,17 @@ $("#bot_save").click(function(){
             bottitle : bottitle
         }).key;
         alert("등록되었습니다.")
+        $("#bot_save").css({"display":"none"});
     }
 });
 
 
 /*삭제*/
 function homeRev(data) {
+    $("#"+data.key).remove();
+}
+
+function homeRev2(data) {
     $("#"+data.key).remove();
 }
 
@@ -197,8 +212,19 @@ function homeDel(obj) {
 		}
 	}
 }
-/**제목삭제 */
 
+function homeDel2(obj) {
+	if (confirm("정말로 삭제하시겠습니까?")) {
+		//var id = obj.parentNode.parentNode.parentNode.id;
+        var id = $(obj).parent().parent().attr("id");
+		if (id != "") {
+			db.ref("root/home2/" + id).remove();
+		}
+	}
+}
+
+
+/**제목삭제 */
 function hometopDel(obj){
   if(confirm("정말로 삭제하시겠습니까")){
       var id = $(obj).parent().parent().attr("id");
@@ -207,6 +233,15 @@ function hometopDel(obj){
       }
   }
 };
+
+function homebotDel(obj){
+    if(confirm("정말로 삭제하시겠습니까")){
+        var id = $(obj).parent().parent().attr("id");
+        if(id != ""){
+            db.ref("root/home2/" + id).remove();
+        }
+    }
+  };
 
 
 /*수정 */
@@ -258,6 +293,56 @@ function homeUp(obj){
 		});
 	}
 } 
+
+function homeChg2(data){
+    if(data.val().bottitle){
+    var id = data.key;
+    var bothtml = '';
+    bothtml += '<li class="hometop_li">';
+    bothtml += '<input type="text" class="hometop" placeholder="카테고리제목" value="' + data.val().bottitle + '"></input>'
+    bothtml += '</li>';
+    bothtml += '<li class="hometop_li">';
+    bothtml += '<button class="hometop_del" onclick="homebotDel(this);">삭제</button>';
+    bothtml += '<button class="hometop_re" onclick="homebotUp(this);">수정</button>';
+    bothtml += '</li>';
+ 
+    $("#"+ id).html(bothtml);
+    alert("수정되었습니다.");
+    }
+    else{
+    var id = data.key;
+    var html = '';
+    html += '<li class="case_ti"><input type="text" class="case_input case_title"   placeholder="타이틀" value="' + data.val().hbtitle + '"></li>';
+    html += '<li class="case_li">';
+    html +='<input type="text"  class="case_input case_in_link" placeholder="링크" value="'+ data.val().hblink+'">';
+    html+='</li>';
+    html += '<li class="case_time">'+data.val().hbwdate+'</li>';
+    html += '<li class="case_bt_li">';
+    html += '<button class="case_bt home_del" onclick="homeDel(this);">삭제</button>';
+    html += '<button class="case_bt home_re"  onclick="homeUp(this);">수정</button>';
+    html+='</li>'
+    $("#"+id).html(html);
+    alert("수정되었습니다.");
+    }
+};
+
+
+function homeUp2(obj){
+    var ul = $(obj).parent().parent();
+	var id = ul.attr("id");
+	var hbtitle = ul.find(".case_title").val();
+    var hblink = ul.find(".case_in_link").val();
+    console.log(id, title, link);
+	if (hbtitle == '' || hblink == '') {
+		alert("내용을 적어주세요.");
+	} else {
+		ref = db.ref("root/home2/" + id);
+		ref.update({
+			hbtitle: hbtitle,
+			hblink: hblink
+		});
+	}
+} 
  
 /**제목수정 */
 function hometopUp(obj){
@@ -271,6 +356,21 @@ function hometopUp(obj){
 		ref = db.ref("root/home/" + id);
 		ref.update({
 			toptitle: toptitle
+		});
+	}
+};
+
+function homebotUp(obj){
+    var ul = $(obj).parent().parent();
+	var id = ul.attr("id");
+	var bottitle = ul.find(".hometop").val();
+    // console.log(id, title, link);
+	if (bottitle == '') {
+		alert("내용을 적어주세요.");
+	} else {
+		ref = db.ref("root/home2/" + id);
+		ref.update({
+			bottitle: bottitle
 		});
 	}
 };
