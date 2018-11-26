@@ -404,7 +404,7 @@ function initFashion_toptitle() {
 }
 initFashion_toptitle()
 
-function fashionTopAdd(){
+function fashionTopAdd(data){
     $("#f_top_title").val(data.val());
     $("#fashion_top_title").html(data.val());
 }
@@ -426,7 +426,7 @@ initFashion_toplist()
    }
 initFashion_bottitle()
 
-function fashionBotAdd(){
+function fashionBotAdd(data){
     $("#f_bot_title").val(data.val());
     $("#fashion_bot_title").html(data.val());
 }
@@ -488,7 +488,7 @@ $("#fashion_save").click(function(){
             link : link,
             wdate : new Date().getTime()
         }).key;
-        console.log(title.link);
+      
         alert("등록되었습니다.");
     }
 });
@@ -507,7 +507,7 @@ $("#fashion_bot_save").click(function(){
             link : link,
             wdate : new Date().getTime()
         }).key;
-        console.log(title.link);
+        // console.log(title.link);
         alert("등록되었습니다.");
     }
 });
