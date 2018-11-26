@@ -58,7 +58,6 @@ initHome2();
 
 
 
-
 /*생성*/
 function homeAdd(data) {
     homeMake(data, $("#case_index"));
@@ -68,8 +67,7 @@ function homeAdd2(data) {
 }
 
 /**리스트 */
-function homeMake(data, parent){
- 
+function homeMake(data, parent){ 
     var id = data.key;
     var html = '';
     html += '<ul class="case_ul clear home_ul" id="' + id + '">';
@@ -225,7 +223,7 @@ function homeDel(obj) {
 		//var id = obj.parentNode.parentNode.parentNode.id;
         var id = $(obj).parent().parent().attr("id");
 		if (id != "") {
-			db.ref("root/home/" + id).remove();
+			db.ref("root/home/list/" + id).remove();
 		}
 	}
 }
@@ -235,7 +233,7 @@ function homeDel2(obj) {
 		//var id = obj.parentNode.parentNode.parentNode.id;
         var id = $(obj).parent().parent().attr("id");
 		if (id != "") {
-			db.ref("root/home2/" + id).remove();
+			db.ref("root/home2/list/" + id).remove();
 		}
 	}
 }
@@ -245,6 +243,7 @@ function homeDel2(obj) {
 function hometopDel(obj){
   if(confirm("정말로 삭제하시겠습니까")){
       var id = $(obj).parent().parent().attr("id");
+      console.log(id);
       if(id != ""){
           db.ref("root/home/" + id).remove();
       }
@@ -394,19 +393,56 @@ function homebotUp(obj){
         
 
 
-/************************ */
+/***************************************************************************/
 /**패션 및 외출 */
-function initFashion() {
-	$(".fashion_ul >li").remove();
-	ref = db.ref("root/fashion");
-	ref.on("child_added", fashionAdd);
-	ref.on("child_removed", fashionRev);
-	ref.on("child_changed", fashionChg);
+
+/**큰카테고리 */
+function initFashion_toptitle() {
+ var ref = db.ref("root/fashion/top/title");
+ ref.on("child_added", fashionTopAdd);
+ ref.on("child_changed", fashionTopAdd);
 }
-initFashion();
+initFashion_toptitle()
+
+function fashionTopAdd(){
+    $("#f_top_title").val(data.val());
+    $("#fashion_top_title").html(data.val());
+}
+
+/**위 리스트 */
+function initFashion_toplist() {
+    var ref = db.ref("root/fashion/top/list");
+    ref.on("child_added", fashionToplistAdd);
+    // ref.on("child_removed", fashionToplistRev);
+    // ref.on("child_changed", fashionToplistChg);
+   }
+initFashion_toplist()
+
+/**큰카테고리 */
+   function initFashion_bottitle() {
+    var ref = db.ref("root/fashion/bottom/title");
+     ref.on("child_added", fashionBotAdd);
+    ref.on("child_changed",  fashionBotAdd);
+   }
+initFashion_bottitle()
+
+function fashionBotAdd(){
+    $("#f_bot_title").val(data.val());
+    $("#fashion_bot_title").html(data.val());
+}
+
+/**아래 리스트 */
+   function initFashion_botlist() {
+    var ref = db.ref("root/fashion/bottom/list");
+    ref.on("child_added", fashionBotlistAdd);
+    // ref.on("child_removed", fashionBotlistRev);
+    // ref.on("child_changed", fashionBotlistChg);
+   }
+   initFashion_botlist()
+
 
 /*생성*/
-function fashionMake(data){
+function fashionMake(data,parent){
     var id = data.key;
     var html = '';
     html += '<ul class="case_ul clear fashion_ul" id="' + id + '">';
@@ -420,19 +456,28 @@ function fashionMake(data){
     html += '<button class="case_bt fashion_re"  onclick="fashionUp(this);">수정</button>';
     html+='</li>'
     html += '</ul>';
-    $("#fashion_index").append(html);
+    parent.append(html);
 };
 
 
-function fashionAdd(data) {
-	var id = data.key;
-	fashionMake(data);
+function fashionToplistAdd(data) {
+  fashionMake(data, $("#fashion_index"));
+   
+}
+function fashionBotlistAdd(data){
+    console.log(data);
+    fashionMake(data, $("#fashion_bot_index"));
 }
 
+
+
+/*저장 입력*/
+
 $("#fashion_save").click(function(){
-    ref = db.ref("root/fashion/");
+    ref = db.ref("root/fashion/top/list");
     var title = $("#f_title").val();
     var link = $("#f_link").val();
+    console.log(title.link);
     if(title == "" | link == ""){
       alert("내용을 입력하세요");
       return false;
@@ -443,9 +488,61 @@ $("#fashion_save").click(function(){
             link : link,
             wdate : new Date().getTime()
         }).key;
+        console.log(title.link);
         alert("등록되었습니다.");
     }
 });
+
+$("#fashion_bot_save").click(function(){
+    ref = db.ref("root/fashion/botttom/list");
+    var title = $("#f_b_list_title").val();
+    var link = $("#f_b_list_link").val();
+    if(title == "" | link == ""){
+      alert("내용을 입력하세요");
+      return false;
+    }
+    else{
+        ref.push({
+            title : title,
+            link : link,
+            wdate : new Date().getTime()
+        }).key;
+        console.log(title.link);
+        alert("등록되었습니다.");
+    }
+});
+
+/**제목 클릭저장 */
+$("#f_top_save").click(function(){
+    ref = db.ref("root/fashion/top/title");
+    var toptitle = $("#f_top_title").val();
+    if(toptitle == ""){
+        alert("내용을 입력하세요");
+        return false;
+    }
+    else{
+        ref.update({
+            toptitle : toptitle
+        });
+        alert("등록되었습니다.");
+    }
+});
+
+$("#f_bot_save").click(function(){
+    ref = db.ref("root/fashion/bottom/title");
+    var toptitle = $("#f_bot_title").val();
+    if(toptitle == ""){
+        alert("내용을 입력하세요");
+        return false;
+    }
+    else{
+        ref.update({
+            toptitle : toptitle
+        });
+        alert("등록되었습니다.");
+    }
+});
+
 
 /*삭제*/
 function fashionRev(data) {
@@ -501,7 +598,7 @@ function fashionChg(data){
 
 
 
-/******************** */
+/******************************************************************** */
 /**장난감 */
 function initToy() {
 	$(".toy_ul >li").remove();
