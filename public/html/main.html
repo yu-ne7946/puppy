@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>강아지 왕국</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/5.5.8/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/5.5.8/firebase-auth.js"></script>
+    <script src="/__/firebase/5.5.8/firebase-database.js"></script>
+    <script src="/__/firebase/5.5.8/firebase-messaging.js"></script>
+    <script src="/__/firebase/5.5.8/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <!--header-->
+    <div class="header row">
+
+        <div class="main-top">
+            <div class="top h-row">
+            <a href="#" class="logo" ><img src="../images/logo.jpg" /></a>
+            <div class="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <p>|</p>
+                <p class="search-info">루테인</p>
+                
+                
+            </div>
+            <ul class="gnb">
+                
+                <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>로그인</a></li>
+               <li><a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>회원가입</a></li>
+               <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>장바구니</a></li>
+            <li><a href="#"><i class="fa fa-headphones" aria-hidden="true"></i>고객센터</a></li>
+            </ul>
+        </div>
+        </div>
+
+        <div class="navi-bar">
+        <div class="navi h-row">
+            <ul class="nav">
+                <li class="ham rig-first"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+                <li><a  class="rig-ma lef-ma" href="#">사료</a></li>
+                <li><a  class="rig-ma" href="#">간식</a></li>
+                <li><a  class="rig-ma" href="#">영양제</a></li>
+                <li><a  class="rig-ma" href="#">목욕/미용</a></li>
+                <li><a  class="rig-ma" href="#">배변/위생</a></li>
+                <li><a  class="rig-ma" href="#">식기/집/이동장</a></li>
+                <li><a  class="rig-ma" href="#">패션/외출</a></li>
+                <li><a href="#">장난감</a></li>
+            </ul>
+            <div id="modal1" class="menu_modal clear"></div>
+            <div id="modal2" class="menu_modal clear"></div>
+            <div id="modal3" class="menu_modal clear"></div>
+            <div id="modal4" class="menu_modal clear"></div>
+            <div id="modal5" class="menu_modal clear"></div>
+            <div id="modal6" class="menu_modal clear"></div>
+            <div id="modal7" class="menu_modal clear"></div>
+            <ul id="modal8" class="menu_modal toy clear"></ul>
+        </div>
+    </div>
+    </div>
+
+    <!--section-->
+    <div class="section row">
+        <!--메인배너-->
+        <div class="main-title">
+
+
+        <div class="main h-row">
+                <div class="main-block">
+                    <div class="block-copy"> 제 1회 안국건강 카피 공모전</div>
+                    <h3><span>도전!</span><br/>안국카피라이터</h3>
+                    <p>1등 상금100만원이 걸려있는<br/>
+                        첫 장원급제 우승은 누구?</p>
+                </div>
+                <ul class="main-navi">
+                        <li><a href="#">레이니데이</a></li>
+                        <li><a href="#">8월 기획전</a></li>
+                        <li><a href="#">회원가입하면 비타민 D3 10000원</a></li>
+                        <li class="none-bor"><a href="#">공모전이벤트</a></li>
+                    </ul>
+           
+            </div> 
+    
+        </div>
+
+
+
+        <!--이벤트배너-->
+        <ul class="evbanner h-row">
+            <li><div class="evbox">
+                
+                <div class="ev-txt">
+                    <p>8월 혜택</p>
+                    <h4>최대1만원 쿠폰 다운받자</h4>
+                    <p class="arrow"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                </div>
+                <div class="evimg"><img src="../../images/event01.png" /></div>
+            </div>
+            </li>
+            <li>
+                    <div class="evbox">
+                           
+                            <div class="ev-txt">
+                                <p>목넘김편한 초소형 사이즈</p>
+                                <h4>루테인만100%</h4>
+                                <p class="arrow"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                            </div>
+                            <div class="evimg"><img src="../../images/event02.png" /></div>
+                        </div>
+            </li>
+            <li class="ev-rig">
+                    <div class="evbox">
+                            
+                            <div class="ev-txt">
+                                <p>매일 출석체크하고</p>
+                                <h4>포인트받자</h4>
+                                <p class="arrow"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></p>
+                            </div>
+                            <div class="evimg"><img src="../../images/event03.png" /></div>
+                        </div>
+            </li>
+
+        </ul>
+
+        <!--베스트상품-->
+        <div class="bestbar h-row">
+            <div class="hr1"><hr/></div>
+            <div class="best-txt">
+                <h3><i class="fa fa-trophy" aria-hidden="true"></i><br/>
+                    베스트셀러</h3>
+                    <p>안국건강 베스트셀러 상품입니다.</p>
+            </div>
+            <div class="hr1 best-rig"><hr/></div>
+        </div>
+
+        <div class="best-prod h-row">
+            <ul class="best-product">
+                    <li>
+                            <div class="best-title">BEST1</div>                        
+                            <div class="best-img"><img src="../../images/best1.jpg" /></div>
+                            <div class="bestblock">
+                                <h3>저분자콜라겐 비피더스 90포 2종</h3>
+                                <hr/>    
+                                <p>
+                                    <span class="le-ma"><del>75,000원</del></span> <span>44,900원</span>
+                                </p>
+                            </div>
+                        </li>
+                        
+                        <li>
+                                <div class="best-title">BEST2</div>                        
+                                <div class="best-img"><img src="../../images/best2.jpg" /></div>
+                                <div class="bestblock">
+                                    <h3>저분자콜라겐 비피더스 90포 2종</h3>
+                                    <hr/>    
+                                    <p>
+                                        <span class="le-ma"><del>75,000원</del></span> <span>44,900원</span>
+                                    </p>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                    <div class="best-title">BEST3</div>                        
+                                    <div class="best-img"><img src="../../images/best3.jpg" /></div>
+                                    <div class="bestblock">
+                                        <h3>저분자콜라겐 비피더스 90포 2종</h3>
+                                        <hr/>    
+                                        <p>
+                                            <span class="le-ma"><del>75,000원</del></span> <span>44,900원</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                        <div class="best-title">BEST4</div>                        
+                                        <div class="best-img"><img src="../../images/best4.jpg" /></div>
+                                        <div class="bestblock">
+                                            <h3>저분자콜라겐 비피더스 90포 2종</h3>
+                                            <hr/>    
+                                            <p>
+                                                <span class="le-ma"><del>75,000원</del></span> <span>44,900원</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                            <div class="best-title">BEST5</div>                        
+                                            <div class="best-img"><img src="../../images/best5.jpg" /></div>
+                                            <div class="bestblock">
+                                                <h3>저분자콜라겐 비피더스 90포 2종</h3>
+                                                <hr/>    
+                                                <p>
+                                                    <span class="le-ma"><del>75,000원</del></span> <span>44,900원</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                               
+                           
+               
+            </ul>
+        </div>
+
+        <!--MD추천상품-->
+        <div class="recommend row">
+            <div class="rec-wrap  h-row">
+                <div class="rec-titlebox">
+                    <div class="rec-div rec-hr-left">
+                        <hr />
+                    </div>
+                    <div class="rec-div rec-title">
+                        <i class="fa fa-star" aria-hidden="true"></i><br />
+                        <h3>MD추천상품</h3>
+                    </div>
+                    <div class="rec-div rec-hr-right">
+                        <hr />
+                    </div>
+                </div>
+
+                <p class="rec-info">안국건강에서 추천하는 상품입니다.</p>
+
+                <div class="rec-firstrow">
+                    <div class="pink square"><img src="../../images/rec/rec1.jpg" /></div>
+                    <div class="pink-block">
+                        <h3>안국 아스타잔틴 미니</h3>
+                        <hr/>
+                        <p>스마트폰,모니터,TV로 인해 우리 눈은 너무 지쳐있습니다.<br/>
+                        이제 안국 아스타잔틴 미니로<br/>
+                        눈 건강을 지켜주세요! </p>
+                    </div>
+                    <div class="blue square"><img src="../../images/rec/rec2.jpg" /></div>
+                    <div class="blue-block">
+                        <h3>안국 알티지오메가 루테인</h3>
+                        <hr />
+                        <p>
+                            요즘 눈이 건조하고 침침하신가요?<br />
+                            눈 건조, 눈 노화, 혈행개선까지 한번에 케어!
+                        </p>
+                    </div>
+                    <div class="green square"><img src="../../images/rec/rec3.jpg" /></div>
+                    <div class="green-block">
+                        <h3>코박사알지</h3>
+                        <hr />
+                        <p>
+                            큰 일교차, 꽃가루 때문에 꽃물, 재채기에 시달리시나요?<br />
+                            여기에 피부까지 예민해 진다면 코박사 '알지'가 딱입니다.
+                    </div>
+                    <div class="grass square"><img src="../../images/rec/rec4.jpg" /></div>
+                    <div class="grass-block">
+                        <h3>안국 안심키즈 멀티비타민</h3>
+                        <hr />
+                        <p>
+                            우리 아이 비타민 따져보고 먹이시나요?<br />
+                            안국 안심키즈 멀티비타민은 주원료, 높은함량, 맛, 가격까지 놓치지 않았습니다.
+                    </div>
+              
+            </div>
+
+        </div>
+    </div>
+
+     <!--상품목록-->
+    <div class="rec-circles row">
+        <div class="rec-cir-wrap h-row">
+            <ul class="rec-cir-list">
+                <li>
+                    <div class="rec-cir-img">
+                    <img src="../../images/rec/rec_cir1.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir2.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir3.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir4.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li class="cir-rig-ma">
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir5.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+
+                <!--첫째-->
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir6.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir7.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir8.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir9.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li class="cir-rig-ma">
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir10.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <!--둘째-->
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir11.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir12.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir13.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li>
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir14.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+                <li class="cir-rig-ma">
+                    <div class="rec-cir-img">
+                        <img src="../../images/rec/rec_cir15.png" />
+                    </div>
+                    <p>아이세이프 루테인</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+        
+   <!--이서진배너-->
+    <div class="middle-banner row">
+        <span>눈건강엔 안국건강!</span>
+    </div>
+     <!--AG.LOOK-->   
+    <div class="look row">
+        <div class="look-wrap h-row">
+            <h2 class="eng">AG.LOOK</h2>
+            <div class="look-box">
+                <div class="box-left">
+                    <img src="../../images/look1.jpg" />
+                </div>
+                <div class="box-right">
+                    <div class="box-right-top"> <img src="../../images/look2.jpg" /></div>
+                    <div class="box-right-bot"><img src="../../images/look3.jpg" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--instagram-->
+        <div class="insta row">
+            <div class="insta-wrap h-row">
+                <h2 class="eng">INSTAGRAM</h2>
+                <ul class="insta-list">
+                    <li><a href="#"><div class="insta-img"><img src="../../images/ins1.jpg" /></div></a></li>
+                    <li><a href="#"><div class="insta-img"><img src="../../images/ins2.jpg" /></div></a></li>
+                    <li><a href="#"><div class="insta-img"><img src="../../images/ins3.jpg" /></div></a></li>
+                    <li><a href="#"><div class="insta-img"><img src="../../images/ins4.png" /></div></a></li>
+                    <li><a href="#"><div class="insta-img"><img src="../../images/ins5.jpg" /></div></a></li>
+                </ul>
+            </div>
+        </div>
+        <!--bottom-->
+    <div class="footer row">
+        <div class="foot-navi">
+            <ul class="foot-nav h-row">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">이용안내</a></li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">대량구매/광고/제휴문의</a></li>
+            </ul>
+        </div>
+        <div class="admin">
+            <div class="admin-info h-row">
+                <div class="info-first">
+                    <div class="infofdet">
+                        <h3>안국건강</h3>
+                        <p>안국건강  대표|어광 사업자등록번호}124-86-00538</p>
+                        <p>통신판매업 신고|2004-00122 <span>사업자번호조회</span></p>
+                        <p>서울본사|서울특별시 영등포구 시흥대로 613 안국 B/D 2F</p>
+                        <p>화성물류창고|18622 경기도 화성시 향남읍 제약공단1 40</p>
+                        <p>개인정보보호책임자|이상조 <span class="eng">Copyright &copy;</span> 안국건강  <span class="eng">All rights reserved.</span></p>
+                    </div>
+                </div>
+
+                <div class="info-second">
+                    <div class="infosdet">
+                        <h4>고객센터</h4>
+                        <h3>1899 5707</h3>
+                        <p>월~금 09:00~18:00</p>
+                        <p>점심시간 12:00~13:00</p>
+                        <p>공휴일/주말 휴무</p>
+                    </div>
+                </div>
+
+                <div class="info-third">
+                    <ul class="infotdet">
+                        <li><h4 class="eng">media</h4><div class="infothimg"><img src="../../images/ins1.jpg" /></div></li>
+                        <li><h4 class="eng">brand</h4><div class="infothimg"><img src="../../images/ins2.jpg" /></div></li>
+                        <li><h4 class="eng">FAQ</h4><div class="infothimg"><img src="../../images/ins3.jpg" /></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="../js/main.js"></script>
+
+  </body>
+</html>
