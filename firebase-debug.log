@@ -1,80 +1,29 @@
-[debug] [2018-11-26T05:23:19.528Z] ----------------------------------------------------------------------
-[debug] [2018-11-26T05:23:19.531Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
-[debug] [2018-11-26T05:23:19.531Z] CLI Version:   5.1.1
-[debug] [2018-11-26T05:23:19.531Z] Platform:      darwin
-[debug] [2018-11-26T05:23:19.532Z] Node Version:  v8.9.4
-[debug] [2018-11-26T05:23:19.532Z] Time:          Mon Nov 26 2018 14:23:19 GMT+0900 (KST)
-[debug] [2018-11-26T05:23:19.532Z] ----------------------------------------------------------------------
+[debug] [2018-11-28T02:52:02.285Z] ----------------------------------------------------------------------
+[debug] [2018-11-28T02:52:02.289Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-11-28T02:52:02.289Z] CLI Version:   5.1.1
+[debug] [2018-11-28T02:52:02.289Z] Platform:      darwin
+[debug] [2018-11-28T02:52:02.289Z] Node Version:  v8.9.4
+[debug] [2018-11-28T02:52:02.290Z] Time:          Wed Nov 28 2018 11:52:02 GMT+0900 (KST)
+[debug] [2018-11-28T02:52:02.290Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-11-26T05:23:19.544Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-26T05:23:19.545Z] > authorizing via signed-in user
-[debug] [2018-11-26T05:23:19.545Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
-[debug] [2018-11-26T05:23:19.548Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
+[debug] [2018-11-28T02:52:02.306Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-28T02:52:02.306Z] > authorizing via signed-in user
+[debug] [2018-11-28T02:52:02.306Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
+[debug] [2018-11-28T02:52:02.308Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-28T02:52:02.309Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-28T02:52:02.629Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-28T02:52:02.650Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
 
-[debug] [2018-11-26T05:23:20.849Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-26T05:23:20.851Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
+[debug] [2018-11-28T02:52:03.913Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-28T02:52:03.916Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
  
-[debug] [2018-11-26T05:23:22.070Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-28T02:52:05.142Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/booldook/Documents/Folder_Temp/ryh-puppy'...
 [info] 
-[debug] [2018-11-26T05:23:22.074Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
+[debug] [2018-11-28T02:52:05.146Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
  
-[debug] [2018-11-26T05:23:23.117Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-28T02:52:06.038Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
-[debug] [2018-11-26T07:00:11.671Z] ----------------------------------------------------------------------
-[debug] [2018-11-26T07:00:11.679Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-11-26T07:00:11.680Z] CLI Version:   5.1.1
-[debug] [2018-11-26T07:00:11.680Z] Platform:      win32
-[debug] [2018-11-26T07:00:11.680Z] Node Version:  v8.12.0
-[debug] [2018-11-26T07:00:11.684Z] Time:          Mon Nov 26 2018 16:00:11 GMT+0900 (대한민국 표준시)
-[debug] [2018-11-26T07:00:11.684Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2018-11-26T07:00:11.727Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-26T07:00:11.729Z] > authorizing via signed-in user
-[debug] [2018-11-26T07:00:11.730Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
-[debug] [2018-11-26T07:00:11.736Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-11-26T07:00:11.737Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2018-11-26T07:00:12.488Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-26T07:00:12.504Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
-
-[debug] [2018-11-26T07:00:13.675Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-26T07:00:13.679Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
- 
-[debug] [2018-11-26T07:00:14.851Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from 'D:\fbroot\puppy'...
-[info] 
-[debug] [2018-11-26T07:00:14.858Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
- 
-[debug] [2018-11-26T07:00:15.548Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5000
-[debug] [2018-11-26T08:36:48.712Z] ----------------------------------------------------------------------
-[debug] [2018-11-26T08:36:48.724Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-11-26T08:36:48.725Z] CLI Version:   5.1.1
-[debug] [2018-11-26T08:36:48.725Z] Platform:      win32
-[debug] [2018-11-26T08:36:48.725Z] Node Version:  v8.12.0
-[debug] [2018-11-26T08:36:48.730Z] Time:          Mon Nov 26 2018 17:36:48 GMT+0900 (대한민국 표준시)
-[debug] [2018-11-26T08:36:48.730Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2018-11-26T08:36:48.786Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-26T08:36:48.788Z] > authorizing via signed-in user
-[debug] [2018-11-26T08:36:48.789Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
-[debug] [2018-11-26T08:36:48.797Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
-
-[debug] [2018-11-26T08:36:50.580Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-26T08:36:50.585Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
- 
-[debug] [2018-11-26T08:36:51.729Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from 'D:\fbroot\puppy'...
-[info] 
-[debug] [2018-11-26T08:36:51.739Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
- 
-[debug] [2018-11-26T08:36:52.618Z] <<< HTTP RESPONSE 200
-[warn] !  hosting: Port 5000 is not available. Trying another port...
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5005

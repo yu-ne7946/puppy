@@ -494,7 +494,7 @@ $("#fashion_save").click(function(){
 });
 
 $("#fashion_bot_save").click(function(){
-    ref = db.ref("root/fashion/botttom/list");
+    ref = db.ref("root/fashion/bottom/list");
     var title = $("#f_b_list_title").val();
     var link = $("#f_b_list_link").val();
     if(title == "" | link == ""){
