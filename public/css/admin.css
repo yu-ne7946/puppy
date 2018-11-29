@@ -28,7 +28,13 @@ border-right:1px solid #ccc; box-sizing:border-box;}
 .case_ul > li {float:left; width:25%; line-height:30px;}
 .case_ul > li > .case_input{width:90%;}
 .case_ul .case_bt{margin-right:5px; margin-bottom:5px; float:right;}
+#case_bot_index{overflow-y: scroll; height:250px;}
 
+/*fashion*/
+#fashion_index{overflow-y:scroll; height:250px;}
+#fashion_bot_index{overflow-y:scroll; height:250px;}
 
+/*toy_index*/
+#toy_index{overflow-y:scroll; height:250px;}
 
 .footer {width:100%; height:50px; background-color:#222; text-align:center; line-height:50px; color:#f1f1f1; position:fixed; bottom:0; display:none;}

@@ -1,29 +1,29 @@
-[debug] [2018-11-28T02:52:02.285Z] ----------------------------------------------------------------------
-[debug] [2018-11-28T02:52:02.289Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
-[debug] [2018-11-28T02:52:02.289Z] CLI Version:   5.1.1
-[debug] [2018-11-28T02:52:02.289Z] Platform:      darwin
-[debug] [2018-11-28T02:52:02.289Z] Node Version:  v8.9.4
-[debug] [2018-11-28T02:52:02.290Z] Time:          Wed Nov 28 2018 11:52:02 GMT+0900 (KST)
-[debug] [2018-11-28T02:52:02.290Z] ----------------------------------------------------------------------
+[debug] [2018-12-05T04:37:17.665Z] ----------------------------------------------------------------------
+[debug] [2018-12-05T04:37:17.669Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-12-05T04:37:17.669Z] CLI Version:   5.1.1
+[debug] [2018-12-05T04:37:17.669Z] Platform:      darwin
+[debug] [2018-12-05T04:37:17.669Z] Node Version:  v8.9.4
+[debug] [2018-12-05T04:37:17.670Z] Time:          Wed Dec 05 2018 13:37:17 GMT+0900 (KST)
+[debug] [2018-12-05T04:37:17.670Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-11-28T02:52:02.306Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-11-28T02:52:02.306Z] > authorizing via signed-in user
-[debug] [2018-11-28T02:52:02.306Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
-[debug] [2018-11-28T02:52:02.308Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-11-28T02:52:02.309Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+[debug] [2018-12-05T04:37:17.688Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-05T04:37:17.688Z] > authorizing via signed-in user
+[debug] [2018-12-05T04:37:17.689Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
+[debug] [2018-12-05T04:37:17.691Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-12-05T04:37:17.691Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2018-11-28T02:52:02.629Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-28T02:52:02.650Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
+[debug] [2018-12-05T04:37:18.053Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-05T04:37:18.063Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
 
-[debug] [2018-11-28T02:52:03.913Z] <<< HTTP RESPONSE 200
-[debug] [2018-11-28T02:52:03.916Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
+[debug] [2018-12-05T04:37:19.859Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-05T04:37:19.863Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
  
-[debug] [2018-11-28T02:52:05.142Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-05T04:37:21.094Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from '/Users/booldook/Documents/Folder_Temp/ryh-puppy'...
+[info] === Serving from '/Users/booldook/Documents/Temp/ryh-puppy'...
 [info] 
-[debug] [2018-11-28T02:52:05.146Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
+[debug] [2018-12-05T04:37:21.099Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
  
-[debug] [2018-11-28T02:52:06.038Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-05T04:37:22.320Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
