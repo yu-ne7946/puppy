@@ -153,7 +153,9 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
         }
     });
 
-    /**식기/이동장 */
+
+
+/**식기/이동장 */
     var db = firebase.database();
     var ref;
     var key;
@@ -188,6 +190,10 @@ function homeChg(data) {
     var id = data.key;
     var ul = $("#" + id);
 }
+
+
+
+
 
 /**장난감 */
 function initToy() {

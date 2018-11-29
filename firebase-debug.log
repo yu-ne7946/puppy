@@ -27,3 +27,28 @@
 [debug] [2018-11-28T02:52:06.038Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2018-11-29T10:53:44.501Z] ----------------------------------------------------------------------
+[debug] [2018-11-29T10:53:44.507Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-11-29T10:53:44.507Z] CLI Version:   5.1.1
+[debug] [2018-11-29T10:53:44.507Z] Platform:      win32
+[debug] [2018-11-29T10:53:44.507Z] Node Version:  v8.12.0
+[debug] [2018-11-29T10:53:44.509Z] Time:          Thu Nov 29 2018 19:53:44 GMT+0900 (대한민국 표준시)
+[debug] [2018-11-29T10:53:44.509Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-29T10:53:44.533Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-29T10:53:44.534Z] > authorizing via signed-in user
+[debug] [2018-11-29T10:53:44.535Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
+[debug] [2018-11-29T10:53:44.539Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
+
+[debug] [2018-11-29T10:53:45.959Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-29T10:53:45.962Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
+ 
+[debug] [2018-11-29T10:53:47.145Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\fbroot\puppy'...
+[info] 
+[debug] [2018-11-29T10:53:47.155Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-29T10:53:47.843Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
