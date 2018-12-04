@@ -155,43 +155,55 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
 
 
 
-/**식기/이동장 */
-    var db = firebase.database();
-    var ref;
-    var key;
-    (function initHome() {
-        ref = db.ref("root/home");
-        ref.on("child_added", homeAdd);
-        ref.on("child_removed", homeRev);
-        ref.on("child_changed", homeChg);
-    })();
-    
-function homeAdd(data) {
-    var html = '';
-    html +='<ul class="food clear">';
-    html += '<li>';
-    html += '<a href="'+data.val().link+'">'+data.val().title+'</a>';
-    html += '</li>'
-    html += '</ul>';
-   /*  html +='<ul class="house clear">';
-    html += '<li>';
-    html += '<a href="'+data.val().link+'">'+data.val().title+'</a>';
-    html += '</li>'
-    html += '</ul>'; */
+/**firebase 로 불러오기 */
+var db = firebase.database();
+
+    /**식기/이동장 */
+
+    /**홈1 타이틀 */
+function initHomeTitle() {
+    var ref = db.ref("root/home/title");
+    ref.on("child_added", homeTitleAdd);
+    ref.on("child_changed", homeTitleAdd);
+}
+/**홈1 리스트*/
+function initHome() {
+    $("#case_index > .home_ul > li").remove();
+    var ref = db.ref("root/home/list");
+    ref.on("child_added", homeAdd);
+    // ref.on("child_removed", homeRev);
+    // ref.on("child_changed", homeChg);
+}
+initHome();
+
+function homeTitleAdd(data){
+  homeMake(data);
+}
+function homeAdd(data){
+   homeMake(data);
+}
+
+
+function homeMake(data) {
+    var html ='';
+    if(data.val().toptitle){
+    html +='<div>';
+    html += '<div class="title">';
+    html += '<a href="#">'+ data.val().toptitle+'</a>';
+    html += '</div>';   
+    }
+    else{
+    for(var j=0; j<data.val().title.length; j++){
+        if(j%7 == 0) html += '<ul style="float:left;width:33%;">';
+        html += '<li class="cont">';
+        html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+        html += '</li>';
+        if(j%7 == 6) html += '</ul>';
+    }
+    html+= '</div>';
     $("#modal6").append(html);
 }
-
-function homeRev(data) {
-    var id = data.key;
-    $("#" + id).remove();
 }
-
-function homeChg(data) {
-    var id = data.key;
-    var ul = $("#" + id);
-}
-
-
 
 
 
@@ -201,7 +213,7 @@ function initToy() {
 	ref = db.ref("root/toy/");
 	ref.on("child_added", toyAdd);
 	ref.on("child_removed", toyRev);
-	ref.on("child_changed", toyChg);
+	// ref.on("child_changed", toyChg);
 }
 initToy();
 
@@ -222,5 +234,4 @@ function toyAdd(data) {
 
 function toyRev(data) {
     var id = data.key;
-    $("#" + id).remove();
-}
+    $("#" + id).remove();}
