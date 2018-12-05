@@ -7,7 +7,10 @@ body{font-size:14px; color:#333; font-family: 'Nanum Gothic', sans-serif; letter
 .row{width:100%}
 
 .h-row{width:1200px; margin:0 auto;}
+<<<<<<< HEAD
+=======
 
+>>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 
 /*header style*/
 .header{background-color:#fff;}
@@ -110,7 +113,7 @@ body{font-size:14px; color:#333; font-family: 'Nanum Gothic', sans-serif; letter
 
 #slide5{background-color:#f1acac;}
 #slide5 .block-copy{color:#430202;border-top:1px solid #430202; border-bottom:1px solid #430202; }
-#slide5 .main-block h3 span{color:#430202; display:inline-block;
+#slide5 .main-block h3 span{color:#430202; display:inline-block; letter-spacing:-0.3rem;
 margin-bottom:35px;font-weight:700;}
 #slide5 .main-block h3 span.pink_bold{font-weight:800;}
 #slide5 .main-block h3{color:#101010; font-weight:normal;}
