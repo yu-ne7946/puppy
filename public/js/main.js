@@ -238,6 +238,7 @@ function homeTitleMake(data) {
     initHome();
 }
 
+
 function homeMake(data) {
     var html = ''; 
     html += '<li class="cont">';
