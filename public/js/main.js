@@ -6,6 +6,44 @@ $(".navi> .nav> li").hover(function(){
     $(".menu_modal").stop().fadeOut();
 });
 */
+/**Banner slide */
+var n =1;
+var chk =1;
+var interval;
+
+$("#slide_ul").find(".slide").each(function(){
+	var name = $(this).data("name");
+	var html = '<span class="w3-bar-item w3-button w3-white" onclick="paging3(this);">'+name+'</span>';
+	$(this).parent().next().find(".pager").append(html);
+});
+
+interval3 = setInterval(slide3,3000);
+
+function slide3(){
+	$("#slides3").parent().find(".pager").find("span").removeClass("w3-text-red");
+	$("#slides3").parent().find(".pager").find("span").eq(n3).addClass("w3-text-red");
+	$("#slides3").stop().animate({
+		"left":-(n3 *100) + "%"
+	}, 700 , function(){
+		if (n3 ==0) chk =1;
+		else if (n3 ==5)chk = -1;
+		n3 +=chk;
+	})
+}
+
+function paging3(obj){
+	n3 = $(obj).index();
+    clearInterval(interval3);
+    slide3();
+    interval3 = setInterval(slide3,3000);
+}
+
+$("#slides3").hover(function(){
+	clearInterval(interval3);
+}, function(){
+	interval3 = setInterval(slide3, 3000);
+});
+
 
 // Initialize Firebase
 var config = {
@@ -160,6 +198,7 @@ var db = firebase.database();
 
     /**식기/이동장 */
 
+<<<<<<< HEAD
 /**홈1 리스트*/
 function initHome() {
     $("#case_index > .home_ul > li").remove();
@@ -171,6 +210,24 @@ function initHome() {
 initHome();
 
 /*
+=======
+    /**홈1 타이틀 */
+function initHomeTitle() {
+    var ref = db.ref("root/home/title");
+    ref.on("child_added", homeTitleAdd);
+    ref.on("child_changed", homeTitleAdd);
+}
+/**홈1 리스트*/
+function initHome() {
+    $("#case_index > .home_ul > li").remove();
+    var ref = db.ref("root/home/list");
+    ref.on("child_added", homeAdd);
+    // ref.on("child_removed", homeRev);
+    // ref.on("child_changed", homeChg);
+}
+initHome();
+
+>>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 function homeTitleAdd(data){
   homeMake(data);
 }
@@ -182,6 +239,7 @@ function homeAdd(data){
 
 function homeMake(data) {
     var html ='';
+<<<<<<< HEAD
     if(data.val().toptitle != undefined) {
         html +='<div>';
         html += '<div class="title">';
@@ -191,6 +249,15 @@ function homeMake(data) {
     else {
         console.log(Object.keys(data.val()));
     }   
+=======
+    if(data.val().toptitle){
+    html +='<div>';
+    html += '<div class="title">';
+    html += '<a href="#">'+ data.val().toptitle+'</a>';
+    html += '</div>';   
+    }
+    else{
+>>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
     for(var j=0; j<data.val().title.length; j++){
         if(j%7 == 0) html += '<ul style="float:left;width:33%;">';
         html += '<li class="cont">';
@@ -200,6 +267,10 @@ function homeMake(data) {
     }
     html+= '</div>';
     $("#modal6").append(html);
+<<<<<<< HEAD
+=======
+}
+>>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 }
 
 
@@ -231,4 +302,8 @@ function toyAdd(data) {
 
 function toyRev(data) {
     var id = data.key;
+<<<<<<< HEAD
     $("#" + id).remove();}
+=======
+    $("#" + id).remove();}
+>>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
