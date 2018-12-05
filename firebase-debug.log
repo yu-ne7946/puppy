@@ -1,3 +1,32 @@
+<<<<<<< HEAD
+[debug] [2018-12-05T04:37:17.665Z] ----------------------------------------------------------------------
+[debug] [2018-12-05T04:37:17.669Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-12-05T04:37:17.669Z] CLI Version:   5.1.1
+[debug] [2018-12-05T04:37:17.669Z] Platform:      darwin
+[debug] [2018-12-05T04:37:17.669Z] Node Version:  v8.9.4
+[debug] [2018-12-05T04:37:17.670Z] Time:          Wed Dec 05 2018 13:37:17 GMT+0900 (KST)
+[debug] [2018-12-05T04:37:17.670Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-05T04:37:17.688Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-05T04:37:17.688Z] > authorizing via signed-in user
+[debug] [2018-12-05T04:37:17.689Z] [iam] checking project yune-puppy for permissions ["firebase.projects.get"]
+[debug] [2018-12-05T04:37:17.691Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-12-05T04:37:17.691Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-12-05T04:37:18.053Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-05T04:37:18.063Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy:testIamPermissions  
+
+[debug] [2018-12-05T04:37:19.859Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-05T04:37:19.863Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yune-puppy  
+ 
+[debug] [2018-12-05T04:37:21.094Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/booldook/Documents/Temp/ryh-puppy'...
+[info] 
+[debug] [2018-12-05T04:37:21.099Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/413099070956/clients/_:getWebAppConfig  
+ 
+[debug] [2018-12-05T04:37:22.320Z] <<< HTTP RESPONSE 200
+=======
 [debug] [2018-12-05T02:53:10.470Z] ----------------------------------------------------------------------
 [debug] [2018-12-05T02:53:10.479Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
 [debug] [2018-12-05T02:53:10.479Z] CLI Version:   5.1.1
@@ -26,5 +55,6 @@
  
 [debug] [2018-12-05T02:53:14.289Z] <<< HTTP RESPONSE 200
 [warn] !  hosting: Port 5000 is not available. Trying another port...
+>>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5005
