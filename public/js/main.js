@@ -241,8 +241,6 @@ function homeMake(data) {
     html+= '</div>';
     $("#modal6").append(html);
 }
-<<<<<<< HEAD
-=======
 
 
 function homeMake(data) {
@@ -251,7 +249,6 @@ function homeMake(data) {
     html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
     html += '</li>';
     $("#modal6 > div > ul").append(html);
->>>>>>> 2286df901f3413323567ce89544936363f8b215a
 }
 
 
