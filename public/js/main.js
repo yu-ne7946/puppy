@@ -21,18 +21,18 @@ interval3 = setInterval(slide3,3000);
 
 function slide3(){
 	$("#slides3").parent().find(".pager").find("span").removeClass("w3-text-red");
-	$("#slides3").parent().find(".pager").find("span").eq(n3).addClass("w3-text-red");
+	$("#slides3").parent().find(".pager").find("span").eq(n).addClass("w3-text-red");
 	$("#slides3").stop().animate({
-		"left":-(n3 *100) + "%"
+		"left":-(n *100) + "%"
 	}, 700 , function(){
-		if (n3 ==0) chk =1;
-		else if (n3 ==5)chk = -1;
-		n3 +=chk;
+		if (n ==0) chk =1;
+		else if (n ==5)chk = -1;
+		n +=chk;
 	})
 }
 
 function paging3(obj){
-	n3 = $(obj).index();
+	n = $(obj).index();
     clearInterval(interval3);
     slide3();
     interval3 = setInterval(slide3,3000);
@@ -198,36 +198,24 @@ var db = firebase.database();
 
     /**식기/이동장 */
 
-<<<<<<< HEAD
 /**홈1 리스트*/
 function initHome() {
     $("#case_index > .home_ul > li").remove();
-    var ref = db.ref("root/home");
+    var ref = db.ref("root/home/list/");
     ref.on("child_added", homeMake);
     // ref.on("child_removed", homeRev);
     // ref.on("child_changed", homeChg);
 }
-initHome();
-
-/*
-=======
-    /**홈1 타이틀 */
 function initHomeTitle() {
-    var ref = db.ref("root/home/title");
-    ref.on("child_added", homeTitleAdd);
-    ref.on("child_changed", homeTitleAdd);
-}
-/**홈1 리스트*/
-function initHome() {
     $("#case_index > .home_ul > li").remove();
-    var ref = db.ref("root/home/list");
-    ref.on("child_added", homeAdd);
+    var ref = db.ref("root/home/title/");
+    ref.on("child_added", homeTitleMake);
     // ref.on("child_removed", homeRev);
     // ref.on("child_changed", homeChg);
 }
-initHome();
+initHomeTitle();
 
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
+/*
 function homeTitleAdd(data){
   homeMake(data);
 }
@@ -237,40 +225,25 @@ function homeAdd(data){
 */
 
 
-function homeMake(data) {
-    var html ='';
-<<<<<<< HEAD
-    if(data.val().toptitle != undefined) {
-        html +='<div>';
-        html += '<div class="title">';
-        html += '<a href="#">'+ topTitle+'</a>';
-        html += '</div>';
-    }
-    else {
-        console.log(Object.keys(data.val()));
-    }   
-=======
-    if(data.val().toptitle){
-    html +='<div>';
+function homeTitleMake(data) {
+    var html = '';
+    html  = '<div>';
     html += '<div class="title">';
-    html += '<a href="#">'+ data.val().toptitle+'</a>';
-    html += '</div>';   
-    }
-    else{
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
-    for(var j=0; j<data.val().title.length; j++){
-        if(j%7 == 0) html += '<ul style="float:left;width:33%;">';
-        html += '<li class="cont">';
-        html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
-        html += '</li>';
-        if(j%7 == 6) html += '</ul>';
-    }
-    html+= '</div>';
+    html += '<a href="#">'+ data.val()+'</a>';
+    html += '</div>';
+    html += '<ul style="float:left;width:33%;">';
+    html += '</ul>';
+    html += '</div>';
     $("#modal6").append(html);
-<<<<<<< HEAD
-=======
+    initHome();
 }
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
+
+function homeMake(data) {
+    var html = ''; 
+    html += '<li class="cont">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#modal6 > div > ul").append(html);
 }
 
 
@@ -302,8 +275,4 @@ function toyAdd(data) {
 
 function toyRev(data) {
     var id = data.key;
-<<<<<<< HEAD
     $("#" + id).remove();}
-=======
-    $("#" + id).remove();}
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326

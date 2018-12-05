@@ -81,10 +81,6 @@ body{font-size:14px; color:#333; font-family: 'Nanum Gothic', sans-serif; letter
 }
 .banner{width:inherit; height:inherit; position:relative;}
 .slide{width:inherit; height:inherit; position:absolute;}
-<<<<<<< HEAD
-#slide1{background-color:#fdf0f6;display:none;}
-#slide2{background-color:#f3fef1; display:none;}
-=======
 
 #slide_ul .slide:nth-child(1){left:0; top:0;}
 #slide_ul .slide:nth-child(2){left:100%; top:0;}
@@ -97,28 +93,19 @@ body{font-size:14px; color:#333; font-family: 'Nanum Gothic', sans-serif; letter
 
 #slide1{background-color:#fdf0f6;}
 #slide2{background-color:#f3fef1;}
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 #slide2 .block-copy{color:#ec543d;}
 #slide2 .main-block h3 span{color:#ec543d; font-weight:bold;}
 #slide2 .main-block h3 {color:#252326;}
 #slide2 p{color:#101010; }
 
-<<<<<<< HEAD
-#slide3{background-color:#f9f9f9;display:none;}
-=======
 #slide3{background-color:#f9f9f9;}
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 #slide3 .main-block{width:550px;}
 #slide3 .ban_img{width:550px;}
 #slide3 .block-copy{color:#101010; border-top:1px solid #101010; border-bottom:1px solid #101010;}
 #slide3 .main-block h3 span{color:#2b5856;}
 #slide3 .main-block h3 {color:#101010;}
 
-<<<<<<< HEAD
-#slide4{background-color:#fcf6dd;  display:none;}
-=======
 #slide4{background-color:#fcf6dd;}
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 #slide4 .block-copy{color:#191504;border-top:1px solid #191504; border-bottom:1px solid #191504; }
 #slide4 .main-block h3 span{color:#343434;}
 #slide4 .main-block h3 {color:#191504;}
@@ -126,11 +113,7 @@ body{font-size:14px; color:#333; font-family: 'Nanum Gothic', sans-serif; letter
 
 #slide5{background-color:#f1acac;}
 #slide5 .block-copy{color:#430202;border-top:1px solid #430202; border-bottom:1px solid #430202; }
-<<<<<<< HEAD
 #slide5 .main-block h3 span{color:#430202; display:inline-block; letter-spacing:-0.3rem;
-=======
-#slide5 .main-block h3 span{color:#430202; display:inline-block;
->>>>>>> a7f88b18814cfec1ee48d51e1b09631389db9326
 margin-bottom:35px;font-weight:700;}
 #slide5 .main-block h3 span.pink_bold{font-weight:800;}
 #slide5 .main-block h3{color:#101010; font-weight:normal;}
