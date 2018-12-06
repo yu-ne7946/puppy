@@ -6,45 +6,44 @@ $(".navi> .nav> li").hover(function(){
     $(".menu_modal").stop().fadeOut();
 });
 */
+
+
 /**Banner slide */
-var n =1;
-var chk =1;
-var interval;
 
-$("#slide_ul").find(".slide").each(function(){
-	var name = $(this).data("name");
-	var html = '<span class="w3-bar-item w3-button w3-white" onclick="paging3(this);">'+name+'</span>';
-	$(this).parent().next().find(".pager").append(html);
+/** 
+/* 
+var banNow = 0;
+$(".main-title .main-navi").click(function () {
+    $(".banner").children("li").hide();
+    $(".banner").children("li").eq(banNow).show();
+    $(".banner").children("li").eq(banNow).find(".ban_img").addClass("img_ani");
+    $(".banner").children("li").eq(banNow).find(".txt_ani").each(function (i) {
+        $(this).css("animation-delay", i / 5 + "s").addClass("ban_ani");
+    });
+    if (banNow == 5) banNow = -1;
+    banNow++;
+}).trigger("click");*/
+
+$(".ban_img").mousemove(function (evt) {
+    var delta = 30;
+    var cX = evt.clientX;
+    var cY = evt.clientY;
+    var iX = $(this).width() / 2;
+    var iY = $(this).height() / 2;
+    var mX = (iX - cX) / delta;
+    var mY = (iY - cY) / delta;
+    $(this).css("transform", "translate(" + mX + "px, " + mY + "px)");
 });
 
-interval3 = setInterval(slide3,3000);
+var now = 0;
 
-function slide3(){
-	$("#slides3").parent().find(".pager").find("span").removeClass("w3-text-red");
-	$("#slides3").parent().find(".pager").find("span").eq(n).addClass("w3-text-red");
-	$("#slides3").stop().animate({
-		"left":-(n *100) + "%"
-	}, 700 , function(){
-		if (n ==0) chk =1;
-		else if (n ==5)chk = -1;
-		n +=chk;
-	})
-}
-
-function paging3(obj){
-	n = $(obj).index();
-    clearInterval(interval3);
-    slide3();
-    interval3 = setInterval(slide3,3000);
-}
-
-$("#slides3").hover(function(){
-	clearInterval(interval3);
-}, function(){
-	interval3 = setInterval(slide3, 3000);
-});
-
-
+     $(".main-navi").children("li").eq(now).click(function(){
+        $(".banner").children("li").eq(now).fadeIn(1000);
+        if (now == 5) now = -5;
+        now++;
+     }).trigger("click");
+      
+    
 
 
 
