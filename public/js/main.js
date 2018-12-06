@@ -21,18 +21,18 @@ interval3 = setInterval(slide3,3000);
 
 function slide3(){
 	$("#slides3").parent().find(".pager").find("span").removeClass("w3-text-red");
-	$("#slides3").parent().find(".pager").find("span").eq(n3).addClass("w3-text-red");
+	$("#slides3").parent().find(".pager").find("span").eq(n).addClass("w3-text-red");
 	$("#slides3").stop().animate({
-		"left":-(n3 *100) + "%"
+		"left":-(n *100) + "%"
 	}, 700 , function(){
-		if (n3 ==0) chk =1;
-		else if (n3 ==5)chk = -1;
-		n3 +=chk;
+		if (n ==0) chk =1;
+		else if (n ==5)chk = -1;
+		n +=chk;
 	})
 }
 
 function paging3(obj){
-	n3 = $(obj).index();
+	n = $(obj).index();
     clearInterval(interval3);
     slide3();
     interval3 = setInterval(slide3,3000);
@@ -43,6 +43,13 @@ $("#slides3").hover(function(){
 }, function(){
 	interval3 = setInterval(slide3, 3000);
 });
+
+
+
+
+
+
+
 
 
 // Initialize Firebase
@@ -101,7 +108,7 @@ function modalMake1(){
 modalMake1();
 
 
-/**간식 */
+/**간식 **/
 var cates2=[{title:"육포/사시미간식(대용량)",link:"#"},{title:"육포/져키간식(소용량)",link:"#"},{title:"명품수제간식",link:"#"},{title:"강아지 덴탈껌",link:"#"},{title:"습식간식/소시지",link:"#"},{title:"캔/파우치",link:"#"},
     {title:"비스켓/쿠키",link:"#"},{title:"건어물",link:"#"},{title:"중대형견",link:"#"},{title:"기타",link:"#"}]
 
@@ -142,8 +149,8 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
     
     modalMake3();
 
-
-/**목욕/미용*/
+/* 
+/**목욕*미용
     $.ajax({
         url:"../json/cate4.json",
         type:"get",
@@ -167,7 +174,9 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
         }
     });
 
-    /**배변위생 */
+
+
+    /**배변위생 
     $.ajax({
         url:"../json/cate5.json",
         type:"get",
@@ -190,83 +199,145 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
             console.log(xhr,status,error);
         }
     });
-
+ */
 
 
 /**firebase 로 불러오기 */
 var db = firebase.database();
 
-    /**식기/이동장 */
+/************ 식기이동장 ************/
 
-    /**홈1 타이틀 */
+/**홈1 타이틀 */
 function initHomeTitle() {
-    var ref = db.ref("root/home/title");
-    ref.on("child_added", homeTitleAdd);
-    ref.on("child_changed", homeTitleAdd);
+    var ref = db.ref("root/home/title/");
+     ref.on("child_added", homeTitleAdd);
+    // ref.on("child_changed", homeTitleAdd);
 }
+initHomeTitle();
+
+
+/**홈1 타이틀 만들기**/
+function homeTitleAdd(data){
+    //   var answer = data.key;
+    
+     console.log(data.key);
+    var html ='';
+    html += '<a href="#">'+data.key+'</a>';
+    $("#modal6 > .mo6_left > div").append(html);
+    }
+
 /**홈1 리스트*/
 function initHome() {
     $("#case_index > .home_ul > li").remove();
-    var ref = db.ref("root/home/list");
-    ref.on("child_added", homeAdd);
-    // ref.on("child_removed", homeRev);
-    // ref.on("child_changed", homeChg);
+    var ref = db.ref("root/home/list/");
+    ref.on("child_added", homeMake);
+    ref.on("child_removed", homeRev);
+    ref.on("child_changed", homeChg);
 }
 initHome();
 
-function homeTitleAdd(data){
-  homeMake(data);
-}
-function homeAdd(data){
-   homeMake(data);
-}
-
-
+ /**홈1 리스트만들기*/
 function homeMake(data) {
-    var html ='';
-    if(data.val().toptitle){
-    html +='<div>';
-    html += '<div class="title">';
-    html += '<a href="#">'+ data.val().toptitle+'</a>';
-    html += '</div>';   
-    }
-    else{
-    for(var j=0; j<data.val().title.length; j++){
-        if(j%7 == 0) html += '<ul style="float:left;width:33%;">';
-        html += '<li class="cont">';
-        html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
-        html += '</li>';
-        if(j%7 == 6) html += '</ul>';
-    }
-    html+= '</div>';
-    $("#modal6").append(html);
-}
-
-
-function homeMake(data) {
+    var id = data.key;
+   
     var html = ''; 
-    html += '<li class="cont">';
+    html += '<li class="cont" id="'+id+'">';
     html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
     html += '</li>';
-    $("#modal6 > div > ul").append(html);
+    $("#modal6 > .mo6_left > .mo6_list1").append(html);
+}
+/**홈1 리스트 삭제  */
+function homeRev(data) {
+    var id = data.key;
+    $("#" + id).remove();}
+
+/**홈1 리스트 수정  */
+function homeChg(data){
+    var id = data.key;
+    var html = ''; 
+    html += '<li class="cont" id="'+id+'">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#" + id).html(html);
+}
+
+
+/**홈2 리스트*/
+function initHome2() {
+    $("#case_index > .home_ul > li").remove();
+    var ref = db.ref("root/home2/list/");
+    ref.on("child_added", homeMake2);
+    ref.on("child_removed", homeRev2);
+    ref.on("child_changed", homeChg2);
+}
+initHome2();
+
+/**홈2 리스트만들기*/
+function homeMake2(data) {
+    console.log(data.val().title);
+    var id = data.key;
+    var html = ''; 
+    html += '<li class="cont" id="'+id+'">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#modal6 > .mo6_right > .mo6_list2").append(html);
+}
+
+/*홈 2리스트 삭제 */
+function homeRev2(data) {
+    var id = data.key;
+    $("#" + id).remove();}
+
+/*홈 2리스트 수정 */
+function homeChg2(data){
+    var id = data.key;
+    var html = ''; 
+    html += '<li class="cont" id="'+id+'">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#" + id).html(html);
 }
 
 
 
-/**장난감 */
+/************************ 패션 **************************/
+/**패션1 리스트*/
+function initFashion() {
+    $("#fashion_index >fashion_ul>li").remove();
+    var ref = db.ref("root/fashion/top/list/");
+    ref.on("child_added", fashionMake);
+    // ref.on("child_removed", fashionRev);
+    // ref.on("child_changed", fashionChg);
+}
+initFashion();
+
+/**패션1 리스트 만들기*/
+function fashionMake(data){
+    console.log(data.val().title);
+    var id = data.key;
+    var html = '';
+    html += '<li class="cont" id="'+id+'">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#modal7 > .mo7_left > .mo7_list1").append(html);
+}
+
+
+/************************ 장난감 **************************/
 function initToy() {
 	$(".toy_ul >li").remove();
 	ref = db.ref("root/toy/");
 	ref.on("child_added", toyAdd);
 	ref.on("child_removed", toyRev);
-	// ref.on("child_changed", toyChg);
+	 ref.on("child_changed", toyChg);
 }
 initToy();
 
     
 function toyAdd(data) {
+    var id = data.key;
     var html = '';
-    html += '<li>';
+    html += '<li id="'+id+'">';
     html += '<a href="'+data.val().link+'">'+data.val().title+'</a>';
     html += '</li>'
 
@@ -281,3 +352,13 @@ function toyAdd(data) {
 function toyRev(data) {
     var id = data.key;
     $("#" + id).remove();}
+
+function toyChg(data){ 
+    var id = data.key;
+    var html = '';
+    html += '<li id="'+id+'">';
+    html += '<a href="'+data.val().link+'">'+data.val().title+'</a>';
+    html += '</li>'
+    $("#" + id).html(html);
+}
+

@@ -189,7 +189,7 @@ var config = {
       else{
           ref.update({
               toptitle : toptitle
-          });
+          }).key;
           alert("등록되었습니다.");
       }
   });
@@ -205,7 +205,7 @@ var config = {
       else{
           ref.update({
               bottitle : bottitle
-          });
+          }).key;
           alert("등록되었습니다.");
       }
   });
@@ -382,6 +382,7 @@ function fashionTopAdd(data){
 
 /**fashion top 리스트 */
 function initFashion_toplist() {
+    $("#fashion_index >fashion_ul>li").remove();
     var ref = db.ref("root/fashion/top/list");
     ref.on("child_added", fashionToplistAdd);
     ref.on("child_removed", fashionlistRev);
@@ -391,6 +392,7 @@ initFashion_toplist()
 
 /**fashion bottom제목 */
    function initFashion_bottitle() {
+   
     var ref = db.ref("root/fashion/bottom/title");
      ref.on("child_added", fashionBotAdd);
     ref.on("child_changed",  fashionBotAdd);
@@ -404,6 +406,7 @@ function fashionBotAdd(data){
 
 /**fashion bottom  리스트 */
    function initFashion_botlist() {
+    $("#fashion_bot_index >fashion_ul>li").remove();
     var ref = db.ref("root/fashion/bottom/list");
     ref.on("child_added", fashionBotlistAdd);
     ref.on("child_removed", fashionlistRev);
@@ -414,6 +417,7 @@ function fashionBotAdd(data){
 
 /*fashion top 리스트 생성*/
 function fashionMake(data){
+
     var id = data.key;
     var html = '';
     html += '<ul class="case_ul clear fashion_ul" id="' + id + '">';

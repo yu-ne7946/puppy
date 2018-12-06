@@ -58,11 +58,16 @@ body{font-size:14px; color:#333; font-family: 'Nanum Gothic', sans-serif; letter
 #modal5 li{width:20%; float:left; padding:5px 0;}
 
 #modal6{display:none;}
-#modal6 li{width:20%; float:left; padding:5px 0;}
+#modal6 > div{width:50%; float:left;}
+#modal6 > div >ul {width:100%;}
+.mo6_ul li{padding:5px 0;}
 
 
 #modal7{display:none;}
-#modal7 li{width:20%; float:left; padding:5px 0;}
+#modal7 > div{width:50%; float:left;}
+#modal7 > div >ul {width:100%;}
+.mo7_ul li{padding:5px 0;}
+
 
 #modal8{display:none;}
 #modal8 li{width:20%; float:left; padding:5px 0;}
@@ -133,41 +138,47 @@ margin-bottom:35px;font-weight:700;}
 .main-navi li a{color:#333; font-size:12px; padding:7px 0;} 
 
 .evbanner{overflow:hidden; padding-top:50px; padding-bottom:50px; }
-.evbanner li{float:left; width:330px; margin-right:10px;}
+.evbanner li{float:left; width:386px; height:125px; margin-right:20px;}
 .evbanner li.ev-rig{margin-right:0;}
-.evbanner li .evbox{width:inherit; margin:0 auto; overflow:hidden; background-color:#f9f7f8;}
-.evbanner li .evbox .evimg{float:right; width:100px; height:70px;  margin:20px 20px;}
+.evbanner li .evbox{width:100%; height:100%; margin:0 auto; overflow:hidden; background-color:#ebf5fa;}
+.evbanner li .evbox .evimg{float:right; width:156px; height:100px;  margin:12.5px 20px 12.5px 0;}
 .evbanner li .evbox .evimg img{width:100%; height:100%;}
-.evbanner li .evbox .ev-txt{width:170px; float:left; margin-top:15px;margin-left:20px;}
-.evbanner li .evbox .ev-txt p{font-size:12px; color:#999; padding:10px 0 5px;}
+.evbanner li .evbox .ev-txt{width:175px; float:left; margin-top:15px;margin-left:20px; line-height:20px;}
+.evbanner li .evbox .ev-txt p{font-size:14px; color:#4d4948; padding:10px 0 5px;}
 .evbanner li .evbox .fa{font-size:20px; color:#999;}
-.evbanner li .evbox .ev-txt h4{font-weight:bold;}
+.evbanner li .evbox .ev-txt h4{font-weight:bold; font-size:17px; color:#000; letter-spacing:0.5px;}
 .evbanner li .evbox .ev-txt fa{margin-right:50px;}
 
 /*베스트상품*/
 .bestbar{padding:20px 0;}
-.bestbar >div{float:left; margin-right:10px;}
-.bestbar .hr1{width:395px;}
+.bestbar >div{float:left;}
+.bestbar .hr1{width:522.5px;}
+.bestbar hr{border:0.8px solid #666;;}
+.bestbar .hr1 .hr_first{margin-top:30px; margin-bottom:2px;}
 .bestbar .best-rig{margin-right:0;}
-.bestbar .best-txt{width:200px; text-align:center; }
-.bestbar .best-txt .fa{}
-.bestbar .best-txt h3{}
-.bestbar .best-txt p{}
+.bestbar .best-txt{width:135px; margin:0 8px 0 8px; text-align:center; }
+.bestbar .best-txt .fa{margin-bottom:10px; font-size:25px;}
+.bestbar .best-txt h3{margin-top:5px; font-size:20px; color:#000;}
 
-.best-prod{overflow:hidden; padding:20px 0 60px;}
+
+.best-prod{overflow:hidden; padding-bottom:60px;}
+.best-prod >p {margin:10px 0 30px; text-align:center; color:#101010;}
 .best-product{}
-.best-product li{float:left; width:192px; margin-right:10px;}
-.best-product li .best-title{margin:0 auto 15px; text-align:center; width:60px; border-top:1px solid #999; border-bottom:1px solid #000; box-sizing:border-box; padding:3px 0;}
-.best-product li .best-img{width:inherit; height:170px; background-color:#ccc;}
+.best-product li{float:left; width:230px; margin-right:12.5px; }
+.best-product li:last-child{margin-right:0;}
+.best-product li .best-title{margin:0 auto 15px; font-weight:bold; text-align:center; width:60px; border-top:1px solid #999; border-bottom:1px solid #000; box-sizing:border-box; padding:3px 0;}
+.best-product li .best-img{width:100%;height:230px; background-color:#eee7ea;}
+.best_imgbox{width:190px; height:190px; margin:20px auto 0;}
 .best-product li .best-img img{width:100%; height:100%;}
 .best-product li .bestblock{padding:15px 0;}
-.best-product li .bestblock h3{padding-bottom:10px; text-align:center; font-size:11px; color:#000;}
-.best-product li .bestblock hr{color:#666; padding-bottom:10px;}
+.best-product li .bestblock h3{padding-bottom:10px; text-align:center; font-size:16px; color:#555; font-weight:bold;}
+.best-product li .bestblock > hr{border:0.5px solid #555; margin-bottom:10px;}
 .best-product li .bestblock p{text-align:center;}
-.best-product li .bestblock p .le-ma{font-size:9px; color:#ccc;}
-.best-product li .bestblock p span{font-size:11px; color:#000; font-weight:bold;}
+.best-product li .bestblock p .le-ma{font-size:12px; color:#555;}
+.best-product li .bestblock p span{font-size:15px; color:#000; font-weight:bold; margin-left:2px;}
 
 /*recomment*/
+
 .recommend{background-color:#faf9f7;}
 .rec-wrap{}
 .rec-titlebox{overflow:hidden; width:inherit; padding:50px 0 10px;}
