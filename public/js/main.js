@@ -35,21 +35,54 @@ $(".ban_img").mousemove(function (evt) {
     $(this).css("transform", "translate(" + mX + "px, " + mY + "px)");
 });
 
-var now = 0;
-
-     $(".main-navi").children("li").eq(now).click(function(){
-        $(".banner").children("li").eq(now).fadeIn(1000);
-        if (now == 5) now = -5;
-        now++;
-     }).trigger("click");
-      
+/**banner animation */
+var n = 0;
+var depth =1;
+var interval;
     
+$("#slide_ul").children(".slide").each(function(){
+    var name = $(this).data("name");
+    var html ='<li onclick="paging(this)">'+name+'</li>';
+    $(this).parent().next(".main-navi").append(html);
+})
 
+interval = setInterval(slide,3000);
+function slide(){
+    $("#slide_ul").parent().children(".main-navi").children("li").css({"color":"#666"});
+    $("#slide_ul").parent().children(".main-navi").children("li").eq(n).css({"color":"#000"});
+    $("#slide_ul .slide").eq(n).css({"display":"none","z-index":depth++}).stop().fadeIn(1000,function(){
+        if (n = 5) n= -1;
+        n++;
+    });
+}
 
+function paging(obj){
+    n = $(obj).index();
+    clearInterval(interval);
+    slide();
+    interval= setInterval(slide,3000);
+}
 
+$("#slide_ul").hover(function(){
+    clearInterval(interval);
+},function(){
+    interval = setInterval(slide,3000);
+});
 
+/*sub banner*/
 
+$(".evbanner > li").mouseover(function () {    
+    $(this).find(".ev_ani").each(function (i) {
+        $(this).css("animation-delay", i / 5 + "s").addClass("ban_ani");
+    });
+})
 
+/**best image */
+$(".best_hover_img").hover(function(){
+    $(this).stop().animate({"opacity":1}, 200).css({"animation-name":"bestImg"});
+}, function(){
+    $(this).stop().animate({"opacity":0}, 200).css({"animation-name":"bestImgBack"});
+});
 
 // Initialize Firebase
 var config = {
