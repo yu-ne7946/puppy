@@ -10,3 +10,4 @@
 .runtimeconfig.json
 .firebase/~
 *.psd
+*.log
