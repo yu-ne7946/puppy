@@ -36,8 +36,8 @@ $(".ban_img").mousemove(function (evt) {
 });
 
 /**banner animation */
-var n = 0;
-var depth =1;
+var n = 1;
+var depth = 3;
 var interval;
     
 $("#slide_ul").children(".slide").each(function(){
@@ -46,12 +46,14 @@ $("#slide_ul").children(".slide").each(function(){
     $(this).parent().next(".main-navi").append(html);
 })
 
-interval = setInterval(slide,3000);
+$("#slide_ul .slide").eq(0).css({"z-index":2});
+$(".main-navi").children("li").eq(0).css({"color":"#000"});
+interval = setInterval(slide, 3000);
 function slide(){
-    $("#slide_ul").parent().children(".main-navi").children("li").css({"color":"#666"});
-    $("#slide_ul").parent().children(".main-navi").children("li").eq(n).css({"color":"#000"});
+    $(".main-navi").children("li").css({"color":"#666"});
+    $(".main-navi").children("li").eq(n).css({"color":"#000"});
     $("#slide_ul .slide").eq(n).css({"display":"none","z-index":depth++}).stop().fadeIn(1000,function(){
-        if (n = 5) n= -1;
+        if (n == 4) n = -1;
         n++;
     });
 }
@@ -71,11 +73,15 @@ $("#slide_ul").hover(function(){
 
 /*sub banner*/
 
-$(".evbanner > li").mouseover(function () {    
+$(".evbanner > li").mouseenter(function () {  
     $(this).find(".ev_ani").each(function (i) {
         $(this).css("animation-delay", i / 5 + "s").addClass("ban_ani");
     });
-})
+});
+
+$(".evbanner > li").mouseleave(function () {
+    $(".ev_ani").removeClass("ban_ani");    
+});
 
 /**best image */
 $(".best_hover_img").hover(function(){
@@ -181,8 +187,7 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
     
     modalMake3();
 
-/* 
-/**목욕*미용
+
     $.ajax({
         url:"../json/cate4.json",
         type:"get",
@@ -207,8 +212,6 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
     });
 
 
-
-    /**배변위생 
     $.ajax({
         url:"../json/cate5.json",
         type:"get",
@@ -231,7 +234,7 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
             console.log(xhr,status,error);
         }
     });
- */
+
 
 
 /**firebase 로 불러오기 */
@@ -251,10 +254,8 @@ initHomeTitle();
 /**홈1 타이틀 만들기**/
 function homeTitleAdd(data){
     //   var answer = data.key;
-    
-     console.log(data.key);
     var html ='';
-    html += '<a href="#">'+data.key+'</a>';
+    html += '<a href="#">'+data.val()+'</a>';
     $("#modal6 > .mo6_left > div").append(html);
     }
 
