@@ -90,6 +90,28 @@ $(".best_hover_img").hover(function(){
     $(this).stop().animate({"opacity":0}, 200).css({"animation-name":"bestImgBack"});
 });
 
+/**best tootip */
+$(".best-img").hover(function(){
+ $(this).find(".best_icon").show();
+},function(){
+    $(this).find(".best_icon").hide();
+})
+
+$(".best_cart").mouseenter(function(){
+    $(this).next("#cart_tooltip").show();
+})
+$(".best-img").mouseleave(function(){
+    $(this).next("#cart_tooltip").hide();
+})
+
+
+$(".best_heart").mouseenter(function(){
+    $(this).next(".heart_tip").show();
+})
+$(".best-img").mouseleave(function(){
+    $(this).next(".heart_tip").hide();
+})
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyD3MilHE9snBQOveViZ4hICUpFYOBheeNY",
