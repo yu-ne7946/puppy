@@ -100,7 +100,7 @@ $(".best-img").hover(function(){
 $(".best_cart").mouseenter(function(){
     $(this).next("#cart_tooltip").show();
 })
-$(".best-img").mouseleave(function(){
+$(".best_cart").mouseleave(function(){
     $(this).next("#cart_tooltip").hide();
 })
 
@@ -108,7 +108,7 @@ $(".best-img").mouseleave(function(){
 $(".best_heart").mouseenter(function(){
     $(this).next(".heart_tip").show();
 })
-$(".best-img").mouseleave(function(){
+$(".best_heart").mouseleave(function(){
     $(this).next(".heart_tip").hide();
 })
 
@@ -134,7 +134,9 @@ $(".navi-bar").mouseleave(function(){
     $(".menu_modal").stop().fadeOut(100);
 });
 
+/**************************/
 /**사료 */
+/**************************/
 var cates=[{main:{title:"브랜드별사료"},sub:[{title:"ANF",link:"#"},{title:"GO",link:"#"},{title:"K9",link:"#"},{title:"NOW",link:"#"},
 {title:"네츄럴코어",link:"#"},{title:"뉴트리언스",link:"#"},{title:"더독(닥터소프트)",link:"#"},{title:"도그랑",link:"#"},{title:"도그밥(수제사료)",link:"#"},{title:"로얄캐닌",link:"#"},{title:"로직(LOGIC)",link:"#"},
 {title:"로투스",link:"#"},{title:"럭셔리 발란스",link:"#"},{title:"맛선",link:"#"},{title:"메라독",link:"#"},{title:"비코푸드",link:"#"},{title:"보레알",link:"#"},{title:"시저",link:"#"},
@@ -167,8 +169,9 @@ function modalMake1(){
 
 modalMake1();
 
-
+/**************************/
 /**간식 **/
+/**************************/
 var cates2=[{title:"육포/사시미간식(대용량)",link:"#"},{title:"육포/져키간식(소용량)",link:"#"},{title:"명품수제간식",link:"#"},{title:"강아지 덴탈껌",link:"#"},{title:"습식간식/소시지",link:"#"},{title:"캔/파우치",link:"#"},
     {title:"비스켓/쿠키",link:"#"},{title:"건어물",link:"#"},{title:"중대형견",link:"#"},{title:"기타",link:"#"}]
 
@@ -188,8 +191,9 @@ function modalMake2(){
 
 modalMake2();
 
-
+/**************************/
 /**영양제*/
+/**************************/
 var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제",link:"#"},{title:"칼슘/관절영양제",link:"#"},{title:"장/소화관련",link:"#"},{title:"눈관련",link:"#"},{title:"구강관련",link:"#"},{title:"귀 관련",link:"#"},{title:"의약부외품",link:"#"},
     {title:"어린강아지용",link:"#"},{title:"임신견",link:"#"},{title:"기타",link:"#"}]
 
@@ -262,26 +266,28 @@ var cates3 = [{title:"종합영양제",link:"#"},{title:"피부/모질영양제"
 /**firebase 로 불러오기 */
 var db = firebase.database();
 
-/************ 식기이동장 ************/
+/**************************/
+/************홈/  식기이동장 ************/
+/**************************/
 
-/**홈1 타이틀 */
+
+/**홈1 타이틀 init*/
 function initHomeTitle() {
     var ref = db.ref("root/home/title/");
      ref.on("child_added", homeTitleAdd);
-    // ref.on("child_changed", homeTitleAdd);
+     ref.on("child_changed", homeTitleAdd);
 }
 initHomeTitle();
 
 
 /**홈1 타이틀 만들기**/
 function homeTitleAdd(data){
-    //   var answer = data.key;
     var html ='';
     html += '<a href="#">'+data.val()+'</a>';
     $("#modal6 > .mo6_left > div").append(html);
     }
 
-/**홈1 리스트*/
+/**홈1 리스트 init*/
 function initHome() {
     $("#case_index > .home_ul > li").remove();
     var ref = db.ref("root/home/list/");
@@ -317,9 +323,26 @@ function homeChg(data){
 }
 
 
+/**홈2 타이틀 init*/
+function initHomeTitle2() {
+    var ref = db.ref("root/home2/title/");
+     ref.on("child_added", homeTitleAdd2);
+     ref.on("child_changed", homeTitleAdd2);
+}
+initHomeTitle2();
+
+/**홈2 타이틀 만들기**/
+function homeTitleAdd2(data){
+    console.log(data.val());
+    var html ='';
+    html += '<a href="#">'+data.val()+'</a>';
+    $("#modal6 > .mo6_right > div").append(html);
+    }
+
+
 /**홈2 리스트*/
 function initHome2() {
-    $("#case_index > .home_ul > li").remove();
+    $("#case_bot_index > .home_ul > li").remove();
     var ref = db.ref("root/home2/list/");
     ref.on("child_added", homeMake2);
     ref.on("child_removed", homeRev2);
@@ -328,8 +351,7 @@ function initHome2() {
 initHome2();
 
 /**홈2 리스트만들기*/
-function homeMake2(data) {
-    console.log(data.val().title);
+function homeMake2(data) {  
     var id = data.key;
     var html = ''; 
     html += '<li class="cont" id="'+id+'">';
@@ -356,13 +378,29 @@ function homeChg2(data){
 
 
 /************************ 패션 **************************/
-/**패션1 리스트*/
+/**패션1 타이틀 init*/
+function initFashionTitle() {
+    var ref = db.ref("root/fashion/top/title");
+     ref.on("child_added", fashionTitleAdd);
+     ref.on("child_changed", fashionTitleAdd);
+}
+initFashionTitle();
+
+/**패션1 타이틀 만들기*/
+function fashionTitleAdd(data){
+    console.log(data.val());
+    var html ='';
+    html += '<a href="#">'+data.val()+'</a>';
+    $("#modal7 > .mo7_left > div").append(html);
+    }
+
+/**패션1 리스트 init*/
 function initFashion() {
     $("#fashion_index >fashion_ul>li").remove();
     var ref = db.ref("root/fashion/top/list/");
     ref.on("child_added", fashionMake);
-    // ref.on("child_removed", fashionRev);
-    // ref.on("child_changed", fashionChg);
+     ref.on("child_removed", fashionRev);
+     ref.on("child_changed", fashionChg);
 }
 initFashion();
 
@@ -376,6 +414,77 @@ function fashionMake(data){
     html += '</li>';
     $("#modal7 > .mo7_left > .mo7_list1").append(html);
 }
+
+/*패션 1리스트 삭제 */
+function fashionRev(data) {
+    var id = data.key;
+    $("#" + id).remove();}
+
+/*패션 1 리스트 수정 */
+function fashionChg(data){
+    var id = data.key;
+    var html = ''; 
+    html += '<li class="cont" id="'+id+'">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#" + id).html(html);
+}
+
+
+
+/**패션2타이틀 init*/
+function initFashionTitle2() {
+    var ref = db.ref("root/fashion/bottom/title");
+     ref.on("child_added", fashionTitleAdd2);
+     ref.on("child_changed", fashionTitleAdd2);
+}
+initFashionTitle2();
+
+/**패션2 타이틀 만들기*/
+function fashionTitleAdd2(data){
+    var html ='';
+    html += '<a href="#">'+data.val()+'</a>';
+    $("#modal7 > .mo7_right > div").append(html);
+    }
+
+
+
+/**패션2 리스트 init*/
+function initFashion2() {
+    $("#fashion_bot_index >fashion_ul>li").remove();
+    var ref = db.ref("root/fashion/bottom/list/");
+    ref.on("child_added", fashionMake2);
+    ref.on("child_removed", fashionRev2);
+    ref.on("child_changed", fashionChg2);
+}
+initFashion2();
+
+/**패션2 리스트 만들기*/
+function fashionMake2(data){
+    console.log(data.val().title);
+    var id = data.key;
+    var html = '';
+    html += '<li class="cont" id="'+id+'">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#modal7 > .mo7_right > .mo7_list2").append(html);
+}
+
+/*패션 2리스트 삭제 */
+function fashionRev2(data) {
+    var id = data.key;
+    $("#" + id).remove();}
+
+/*패션 2 리스트 수정 */
+function fashionChg2(data){
+    var id = data.key;
+    var html = ''; 
+    html += '<li class="cont" id="'+id+'">';
+    html += '<a href='+data.val().link+'>'+data.val().title+'</a>';
+    html += '</li>';
+    $("#" + id).html(html);
+}
+
 
 
 /************************ 장난감 **************************/
