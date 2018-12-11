@@ -48,7 +48,7 @@ $("#slide_ul").children(".slide").each(function(){
 
 $("#slide_ul .slide").eq(0).css({"z-index":2});
 $(".main-navi").children("li").eq(0).css({"color":"#000"});
-interval = setInterval(slide, 3000);
+interval = setInterval(slide, 4000);
 function slide(){
     $(".main-navi").children("li").css({"color":"#666"});
     $(".main-navi").children("li").eq(n).css({"color":"#000"});
