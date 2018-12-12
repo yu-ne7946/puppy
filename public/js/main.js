@@ -526,3 +526,20 @@ function toyChg(data){
     $("#" + id).html(html);
 }
 
+/***********************/
+/**instagram**/
+/***********************/
+$(".insta-list > li").mouseenter(function(){
+$(this).find(".insta_over").show();
+})
+$(".insta-list > li").mouseleave(function(){
+    $(this).find(".insta_over").hide();
+    })
+
+$(".infotdet > li").mouseenter(function(){
+$(this).find(".info_over").fadeIn();
+});
+
+$(".infotdet > li").mouseleave(function(){
+    $(this).find(".info_over").fadeOut();
+    });
