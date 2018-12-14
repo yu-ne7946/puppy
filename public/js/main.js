@@ -530,6 +530,32 @@ function toyChg(data){
     $("#" + id).html(html);
 }
 
+
+/*********** */
+/**rec */
+/*************/
+$(".square").hover(function () {
+    $(this).children("img").css({
+        "animation-name": "featuredAni"
+    });
+}, function () {
+    $(this).children("img").css({
+        "animation-name": "featuredAniBack"
+    });
+});
+
+$(".rec_imgbx").hover(function () {
+    $(this).children("img").css({
+        "animation-name": "featuredAni"
+    });
+}, function () {
+    $(this).children("img").css({
+        "animation-name": "featuredAniBack"
+    });
+});
+
+
+
 /***********************/
 /**instagram**/
 /***********************/

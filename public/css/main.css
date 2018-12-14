@@ -250,7 +250,17 @@ right:5px; cursor:pointer; display:none;}
 
 .rec-firstrow{position:relative; width:inherit; height:1000px;}
 .rec-firstrow img{width:100%;}
-.rec-firstrow .square img{width:100%; height:100%;}
+.rec-firstrow .square img{width:100%; height:100%;animation-duration:0.5s; animation-fill-mode:forwards;}
+@keyframes featuredAni {
+	0% {transform: scale(1);}
+	100% {transform: scale(1.3);}
+}
+@keyframes featuredAniBack {
+	0% {transform: scale(1.3);}
+	100% {transform: scale(1);}
+}
+
+
 .rec_text h3{font-size:18px; font-weight:bold; color:#454444; padding-bottom:7px;}
 .rec_text hr{width:inherit; border-color:#454444; border-top-width:1.5px; padding-bottom:7px;}
 .rec_text p{font-size:13px; line-height:15px; color:#454444;}
@@ -271,14 +281,31 @@ right:5px; cursor:pointer; display:none;}
 .grass-block{position:absolute; width:450px;  top:890px; right:70px;}
 
 
+
+
+
+
+
+
 .rec-circles{padding:100px 0 40px; background-color:#fdf3f8;}
 .rec-cir-wrap{}
 .rec-cir-wrap .rec-cir-list{overflow:hidden;}
 .rec-cir-list li{float:left; width:224px; height:224px; margin-right:20px; padding-bottom:60px; text-align:center;}
 .rec-cir-list li.cir-rig-ma{margin-right:0;}
 .rec-cir-list li .rec-cir-img{width:200px; height:200px; border:1px solid #fff; 
-    margin-bottom:10px; border-radius:50%; background-color:#fff;}
+    margin-bottom:10px; border-radius:50%; background-color:#fff;  overflow:hidden;}
 .rec_imgbx{width:152px; height:152px;margin:auto; margin-top:24px;}
+
+.rec_imgbx img{animation-duration:0.5s; animation-fill-mode:forwards;}
+@keyframes featuredAni {
+	0% {transform: scale(1);}
+	100% {transform: scale(1.3);}
+}
+@keyframes featuredAniBack {
+	0% {transform: scale(1.3);}
+	100% {transform: scale(1);}
+}
+
 .rec-cir-list li p{padding-top:5px;}
 
 /*이서진배너*/

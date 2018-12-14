@@ -57,16 +57,33 @@ border-top:1px solid #ccc; border-bottom:1px solid #ccc; box-sizing:border-box; 
 /********************************/
 .section2{width:100%;}
 .sec2_title{text-align:center; padding:80px 0;}
-.best_ul{width:600px; margin:auto; border:1px solid #333; padding:10px;}
+.best_ul{width:600px; margin:auto; border:1px solid #333; padding:10px; margin-bottom:3%;}
 .best_ul li:not(.best_bt){margin-bottom:3px;}
 .best_ul input[type=text]{padding:5px 0; text-align:center; }
 .best_photo_box, .best_price_box{float:left;}
+
 .best_title_box {width:100%; }
-.best_title_box input[type]{width:100%; }
+.best_title_box input[type].be_title{width:60%; box-sizing: border-box;}
+.best_title_box input[type].be_link{width:35%; box-sizing:border-box;}
+
 .best_photo_box {width:30%;}
 .best_photo_box input[type]{width:90%;}
 .best_price_box {width:70%;}
 .best_price_box input[type]{width:100%;}
 .best_bt{float:right;}
+
+.best_init{width:95%; margin:auto; }
+.best_init ul{width:18%;margin-right:2.5%; border:1px solid #333; box-sizing:border-box; float:left; padding:1% 0;}
+.best_init ul:last-child{margin-right:0;}
+.best_init ul li{width:90%; margin:auto; padding-bottom:2%;}
+.ind_title{width:70%}
+.ind_link{width:20%;}
+.index_imgbox{float:left; width:40%;}
+.ind_img_input{margin-top:10%;}
+.index_prili{text-align:center;}
+.index_bt{text-align:center;}
+.index_bt button{width:30%;}
+.index_bt .index_del{margin-right:10%;}
+
 
 .footer {width:100%; height:50px; background-color:#222; text-align:center; line-height:50px; color:#f1f1f1; position:fixed; bottom:0; display:none;}
