@@ -457,7 +457,7 @@ function fashionToplistAdd(data) {
 }
 
 function fashionBotlistAdd(data) {
-    console.log(data);
+    // console.log(data);
     fashionbotMake(data);
 }
 
@@ -744,46 +744,52 @@ function toyChg(data) {
 /* best상품 */
 /********************/
 function initBest() {
-    $(".best_init > ul").remove();
-     ref = db.ref("root/best/");
+    $(".best_index >ul").remove();
+    ref = db.ref("root/best/");
     ref.on("child_added", bestMake);
     ref.on("child_removed", bestRev);
-    // ref.on("child_changed", bestChg);
+    ref.on("child_changed", bestChg);
 }
 initBest();
 
 
 /**생성 */
 function bestMake(data) {
-    if(data.key.length <= 5) {
+    // if(data.key.length <= 5) {
     var id = data.key;
+    var title = data.val().title;
+    var link = data.val().link;
+    var ori_img = data.val().ori_img;
+    var ho_img = data.val().ho_img;
+    var ori_price = data.val().ori_price;
+    var dis_price = data.val().dis_price;
     var src1 = '../images/best/' + data.val().ori_img;
     var src2 = '../images/best/' + data.val().ho_img;
     var html = '';
-    html += '<ul class="best_index" id="'+id+'">'
+    html += '<ul class="best_index" id="' + id + '">'
     html += '<li>'
-    html += '<input type="text" id="index_title" class="ind_title" value="'+data.val().title+'" >'
-    html += '<input type="text" id="index_link" class="ind_link" value="'+data.val().link+'" >'
+    html += '<input type="text" id="index_title" class="ind_title" value="' + title + '" >'
+    html += '<input type="text" id="index_link" class="ind_link" value="' + link+ '" >'
     html += '</li>'
 
     html += '<li class="clear index_imgli">'
-    html += '<div class="index_imgbox"><img src="'+src1+'" class="img"></div>'
-    html += '<input type="text" id="index_or_img" class="ind_img_input" value="'+data.val().ori_img+'" placeholder="원래이미지"></li>'
+    html += '<div class="index_imgbox"><img src="' + src1 + '" class="img"></div>'
+    html += '<input type="text" id="index_or_img" class="ind_orimg_input" value="' + ori_img+ '" placeholder="원래이미지"></li>'
     html += '<li class="clear index_imgli">'
     html += '<div class="index_imgbox">'
-    html += '<img src="'+src2+'"class="img">'
+    html += '<img src="' + src2 + '"class="img">'
     html += '</div>'
-    html += '<input type="text" id="index_or_img" class="ind_img_input" value="'+data.val().ho_img+'" placeholder="호버 이미지">'
+    html += '<input type="text" id="index_or_img" class="ind_hoimg_input" value="' + ho_img + '" placeholder="호버 이미지">'
     html += '</li>'
-    html += '<li class="index_prili">원래가격<input type="text" id="index_or_price" class="index_price" value="'+data.val().ori_price+'원" placeholder="Original price"></li>'
-    html += '<li class="index_prili">할인가격<input type="text" id="index_or_price" class="index_price" value="'+data.val().dis_price+'원" placeholder="Discount price"></li>'
+    html += '<li class="index_prili">원래가격<input type="text" id="index_or_price" class="index_orprice" value="' + ori_price + '" placeholder="Original price"></li>'
+    html += '<li class="index_prili">할인가격<input type="text" id="index_or_price" class="index_hoprice" value="' + dis_price + '" placeholder="Discount price"></li>'
     html += '<li class="index_bt">'
     html += '<button class="index_del" onclick="bestDel(this);">삭제</button>'
-    html += '<button class="index_re">수정</button>'
+    html += '<button class="index_re" onclick="bestUp(this);">수정</button>'
     html += '</li>'
     html += '</ul>'
     $(".best_init").append(html);
-    }
+    // }
 }
 
 
@@ -803,10 +809,10 @@ $("#best_save").click(function () {
         ref.push({
             title: title,
             link: link,
-            ori_img : ori_img,
-            ho_img : ho_img,
-            ori_price : ori_price,
-            dis_price : dis_price
+            ori_img: ori_img,
+            ho_img: ho_img,
+            ori_price: ori_price,
+            dis_price: dis_price
         }).key;
         alert("등록되었습니다.");
     }
@@ -815,7 +821,8 @@ $("#best_save").click(function () {
 /**삭제**/
 
 function bestRev(data) {
-    $("#" + data.key).remove();
+    var id = data.key;
+	$("#" + id).remove();
 }
 
 
@@ -827,4 +834,174 @@ function bestDel(obj) {
             db.ref("root/best/" + id).remove();
         }
     }
+}
+
+/**수정**/
+
+function bestChg(data) {
+    // var id = data.key;
+
+    // var title = data.val().title;
+    // var link = data.val().link;
+    // var ori_img = data.val().ori_img;
+    // var ho_img = data.val().ho_img;
+    // var ori_price = data.val().ori_price;
+    // var dis_price = data.val().dis_price;
+    // var src1 = '../images/best/' + data.val().ori_img;
+    // var src2 = '../images/best/' + data.val().ho_img;
+    // var html='';
+    // html += '<ul class="best_index" id="' + id + '">'
+    // html += '<li>'
+    // html += '<input type="text" id="index_title" class="ind_title" value="' + title + '" >'
+    // html += '<input type="text" id="index_link" class="ind_link" value="' + link+ '" >'
+    // html += '</li>'
+    // html += '<li class="clear index_imgli">'
+    // html += '<div class="index_imgbox"><img src="' + src1 + '" class="img"></div>'
+    // html += '<input type="text" id="index_or_img" class="ind_orimg_input" value="' + ori_img+ '" placeholder="원래이미지"></li>'
+    // html += '<li class="clear index_imgli">'
+    // html += '<div class="index_imgbox">'
+    // html += '<img src="' + src2 + '"class="img">'
+    // html += '</div>'
+    // html += '<input type="text" id="index_or_img" class="ind_hoimg_input" value="' + ho_img + '" placeholder="호버 이미지">'
+    // html += '</li>'
+    // html += '<li class="index_prili">원래가격<input type="text" id="index_or_price" class="index_orprice" value="' + ori_price + '" placeholder="Original price"></li>'
+    // html += '<li class="index_prili">할인가격<input type="text" id="index_or_price" class="index_hoprice" value="' + dis_price+ '" placeholder="Discount price"></li>'
+    // html += '<li class="index_bt">'
+    // html += '<button class="index_del" onclick="bestDel(this);">삭제</button>'
+    // html += '<button class="index_re" onclick="bestUp(this);">수정</button>'
+    // html += '</li>'
+    // html += '</ul>'
+    // $("#" + id).html(html);
+    // alert("수정되었습니다.");
+
+    var id = data.key;
+	var ul = $("#" + id);
+	$(".ind_orimg_input", ul).attr("src", "../images/best/" + data.val().ori_img);
+    $(".ind_hoimg_input", ul).attr("src", "../images/best/" + data.val().ho_img);
+	alert("수정되었습니다.");
+}
+
+function bestUp(obj) {
+    var ul = $(obj).parent().parent();
+    var id = ul.attr("id");
+    var title = $(".ind_title",ul).val();
+    var link = $(".ind_link",ul).val();
+    var ori_img = $(".ind_orimg_input",ul).val();
+    var ho_img = $(".ind_hoimg_input",ul).val();
+    var ori_price = $(".index_orprice",ul).val();
+    var dis_price = $(".index_hoprice",ul).val();
+
+    // console.log(id, title, link);
+    if (title == "" | link == "" | ori_img == "" | ho_img == "" | ori_price == "" |
+        dis_price == "") {
+        alert("내용을 적어주세요.");
+    } else {
+        ref = db.ref("root/best/" + id);
+        ref.update({
+            title: title,
+            link: link,
+            ori_img: ori_img,
+            ho_img: ho_img,
+            ori_price: ori_price,
+            dis_price: dis_price
+        });
+    }
+}
+
+
+
+
+/********************/
+/* MD추천 */
+/********************/
+function initReco() {
+    $(".rec_index").remove();
+    ref = db.ref("root/reco");
+    ref.on("child_added", recoAdd);
+    ref.on("child_removed", recoRev);
+    ref.on("child_changed", recoChg);
+}
+initReco();
+
+
+/**생성 **/
+function recoAdd(data) {
+    var id = data.key;
+    var title = data.val().title;
+    var link = data.val().link;
+    var img = data.val().img;
+    var src = '../images/rec/' + img;
+    var html = '';
+    html += '<ul class="rec_index" id="'+id+'">';
+    html += '<li><input type="text" class="rec_ind_title" placeholder="상품명" value="' + title + '"></li>'
+    html += '<li><input type="text" class="rec_ind_link" placeholder="링크" value="' + link + '"></li>'
+    html += '<li><input type="text" class="rec_ind_img" placeholder="이미지" value="' + img + '"></li>'
+    html += '<li><img src="' + src + '"></li>'
+    html += '<li><button class="rec_del" onclick="recoDel(this);">삭제</button>'
+    html += '<button class="rec_re" onclick="recoUp(this);">수정</button></li>'
+    html += '</ul>'
+    $(".rec_init").append(html);
+}
+
+
+
+$("#rec_save").on('click', function () {
+
+    var title = $(".rec_title").val();
+    var link = $(".rec_link").val();
+    var img = $(".rec_img").val();
+
+    if (title == '' || link == '' || img == '') {
+        alert("내용을 적어주세요.");
+    } else {
+        ref = db.ref("root/reco");
+        ref.push({
+            title: title,
+            link: link,
+            img: img
+        }).key;
+        alert("등록되었습니다.");
+    }
+});
+
+/**삭제 **/
+function recoDel(obj) {
+	if (confirm("정말로 삭제하시겠습니까?")) {
+		//var id = obj.parentNode.parentNode.parentNode.id;
+		var id = $(obj).parent().parent().attr("id");
+		if (id != "") {
+			db.ref("root/reco/" + id).remove();
+		}
+	}
+}
+
+function recoRev(data) {
+	var id = data.key;
+	$("#" + id).remove();
+}
+
+/**수정 **/
+function recoUp(obj) {
+	var ul = $(obj).parent().parent();
+    var id = ul.attr("id");
+    var title = $(".rec_ind_title", ul).val();
+	var link = $(".rec_ind_link", ul).val();
+	var img = $(".rec_ind_img", ul).val();
+	if (title == '' || link == '' || img == '') {
+		alert("내용을 적어주세요.");
+	} else {
+		ref = db.ref("root/reco/" + id);
+		ref.update({
+			img: img,
+			title: title,
+			link: link
+		});
+	}
+}
+
+function recoChg(data) {
+	var id = data.key;
+	var ul = $("#" + id);
+	$("img", ul).attr("src", "../images/rec/" + data.val().img);
+	alert("수정되었습니다.");
 }

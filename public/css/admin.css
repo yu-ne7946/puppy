@@ -6,11 +6,11 @@
 
 .navs {width:100%; height:100px; margin:auto; text-align:center;
 border-top:1px solid #ccc; border-bottom:1px solid #ccc; box-sizing:border-box; }
-.nav {width:33.33%; height:100px; float:left;  font-size:1em; font-weight:bold; color:#333; cursor:pointer; text-align:center; border-right:1px solid #ccc; 
- box-sizing:border-box;}
+.nav {width:33.33%; height:100px; float:left;  font-size:1em; font-weight:bold;  cursor:pointer; text-align:center; border-right:1px solid #333; 
+ box-sizing:border-box;background-color:#dfc89f;color:#2f2c29;}
 .nav:last-child{border-right:none;}
 
-.nav:hover {background-color:#dfc89f; color:#2f2c29;}
+
 .nav > span {font-size:1em; margin-top:30px;}
 
 /* .section{width:100%;  height:100%; margin:auto;} */
@@ -55,8 +55,8 @@ border-top:1px solid #ccc; border-bottom:1px solid #ccc; box-sizing:border-box; 
 /********************************/
 /*section 2*/
 /********************************/
-.section2{width:100%;}
-.sec2_title{text-align:center; padding:80px 0;}
+.section2{width:100%; padding-bottom:8%;}
+.head_tit{text-align:center; padding:80px 0;}
 .best_ul{width:600px; margin:auto; border:1px solid #333; padding:10px; margin-bottom:3%;}
 .best_ul li:not(.best_bt){margin-bottom:3px;}
 .best_ul input[type=text]{padding:5px 0; text-align:center; }
@@ -79,11 +79,33 @@ border-top:1px solid #ccc; border-bottom:1px solid #ccc; box-sizing:border-box; 
 .ind_title{width:70%}
 .ind_link{width:20%;}
 .index_imgbox{float:left; width:40%;}
-.ind_img_input{margin-top:10%;}
+.ind_orimg_input{margin-top:10%;}
+.ind_hoimg_input{margin-top:10%;}
 .index_prili{text-align:center;}
 .index_bt{text-align:center;}
 .index_bt button{width:30%;}
 .index_bt .index_del{margin-right:10%;}
 
 
+/********************************/
+/*section3*/
+/********************************/
+.section3{width:100%;}
+.sec3_title{text-align:center; padding:50px 0;}
+.rec_ul{width:200px; margin:auto; border:1px solid #333; padding:10px; margin-bottom:3%;}
+.rec_ul li{padding:5px 0;}
+.rec_ul li:first-child input[type=text]{width:100%;}
+.rec_ul li:last-child{text-align:right;}
+
+.rec_init{width:95%; margin:auto;}
+.rec_index{width:17%;margin-right:2.5%;border:1px solid #999; box-sizing:border-box; float:left; padding:1%;
+margin-bottom:2%;}
+.rec_index li{text-align:center; padding-bottom:2%;}
+.rec_ind_title{width:90%;}
+.rec_ind_link{width:90%}
+.rec_ind_img{width:90%;}
+
+
 .footer {width:100%; height:50px; background-color:#222; text-align:center; line-height:50px; color:#f1f1f1; position:fixed; bottom:0; display:none;}
+
+
