@@ -291,7 +291,7 @@ right:5px; cursor:pointer; display:none;}
 .rec-cir-wrap{}
 .rec-cir-wrap .rec-cir-list{overflow:hidden;}
 .rec-cir-list li{float:left; width:224px; height:224px; margin-right:20px; padding-bottom:60px; text-align:center;}
-.rec-cir-list li.cir-rig-ma{margin-right:0;}
+.rec-cir-list li:nth-child(5),.rec-cir-list li:nth-child(10),.rec-cir-list li:nth-child(15){margin-right:0;}
 .rec-cir-list li .rec-cir-img{width:200px; height:200px; border:1px solid #fff; 
     margin-bottom:10px; border-radius:50%; background-color:#fff;  overflow:hidden;}
 .rec_imgbx{width:152px; height:152px;margin:auto; margin-top:24px;}
@@ -306,7 +306,7 @@ right:5px; cursor:pointer; display:none;}
 	100% {transform: scale(1);}
 }
 
-.rec-cir-list li p{padding-top:5px;}
+.rec-cir-list li p{padding-top:5px; color:#666;}
 
 /*이서진배너*/
 .middle-banner{background-image:url("../images/new/animal.jpg"); text-align:center; padding:150px 0; background-attachment: fixed; background-position:center center; background-repeat:no-repeat;

@@ -744,7 +744,7 @@ function toyChg(data) {
 /* best상품 */
 /********************/
 function initBest() {
-    $(".best_index >ul").remove();
+    $(".best_index").remove();
     ref = db.ref("root/best/");
     ref.on("child_added", bestMake);
     ref.on("child_removed", bestRev);
@@ -758,6 +758,7 @@ function bestMake(data) {
     // if(data.key.length <= 5) {
     var id = data.key;
     var title = data.val().title;
+    var titlespan =data.val().titlespan;
     var link = data.val().link;
     var ori_img = data.val().ori_img;
     var ho_img = data.val().ho_img;
@@ -769,9 +770,15 @@ function bestMake(data) {
     html += '<ul class="best_index" id="' + id + '">'
     html += '<li>'
     html += '<input type="text" id="index_title" class="ind_title" value="' + title + '" >'
-    html += '<input type="text" id="index_link" class="ind_link" value="' + link+ '" >'
-    html += '</li>'
 
+    if (titlespan) {
+        html += '<input type="text" id="index_title_span" class="ind_titlespan" value="' + titlespan + '" >'
+    }
+
+    html += '</li>'
+    html += '<li>';
+    html += '<input type="text" id="index_link" class="ind_link" value="' + link+ '" >'
+    html += '</li>';
     html += '<li class="clear index_imgli">'
     html += '<div class="index_imgbox"><img src="' + src1 + '" class="img"></div>'
     html += '<input type="text" id="index_or_img" class="ind_orimg_input" value="' + ori_img+ '" placeholder="원래이미지"></li>'
@@ -796,6 +803,7 @@ function bestMake(data) {
 $("#best_save").click(function () {
     ref = db.ref("root/best/");
     var title = $("#best_title").val();
+    var titlespan = $("#best_titlespan").val();
     var link = $("#best_link").val();
     var ori_img = $("#best_photo1").val();
     var ho_img = $("#best_photo2").val();
@@ -808,6 +816,7 @@ $("#best_save").click(function () {
     } else {
         ref.push({
             title: title,
+            titlespan : titlespan,
             link: link,
             ori_img: ori_img,
             ho_img: ho_img,
@@ -840,7 +849,6 @@ function bestDel(obj) {
 
 function bestChg(data) {
     // var id = data.key;
-
     // var title = data.val().title;
     // var link = data.val().link;
     // var ori_img = data.val().ori_img;
@@ -875,9 +883,11 @@ function bestChg(data) {
     // alert("수정되었습니다.");
 
     var id = data.key;
-	var ul = $("#" + id);
-	$(".ind_orimg_input", ul).attr("src", "../images/best/" + data.val().ori_img);
-    $(".ind_hoimg_input", ul).attr("src", "../images/best/" + data.val().ho_img);
+    var ul = $("#" + id);
+    var ori_img = data.val().ori_img;
+    var ho_img = data.val().ho_img;
+	$(".ind_orimg_input", ul).attr("src", "../images/best/" + ori_img);
+    $(".ind_hoimg_input", ul).attr("src", "../images/best/" + ho_img);
 	alert("수정되었습니다.");
 }
 
@@ -885,6 +895,7 @@ function bestUp(obj) {
     var ul = $(obj).parent().parent();
     var id = ul.attr("id");
     var title = $(".ind_title",ul).val();
+    var titlespan = $(".ind_titlespan",ul).val();
     var link = $(".ind_link",ul).val();
     var ori_img = $(".ind_orimg_input",ul).val();
     var ho_img = $(".ind_hoimg_input",ul).val();
@@ -899,6 +910,7 @@ function bestUp(obj) {
         ref = db.ref("root/best/" + id);
         ref.update({
             title: title,
+            titlespan : titlespan,
             link: link,
             ori_img: ori_img,
             ho_img: ho_img,
