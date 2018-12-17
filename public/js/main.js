@@ -724,8 +724,9 @@ function toyChg(data) {
 
 
 /************************ BEST **************************/
+var idx = 1;
 function initBest() {
-
+    idx = 1;
     ref = db.ref("root/best/");
     ref.on("child_added", bestMake);
     ref.on("child_removed", bestRev);
@@ -748,7 +749,7 @@ function bestMake(data) {
     var html = '';
     html += '<li id="'+id+'">';
     html += '<a href="'+link+'">'
-    html += '<div class="best-title">BEST'+id.index+'</div>';
+    html += '<div class="best-title">BEST'+(idx++)+'</div>';
     html += '<div class="best-img">';
     html += '<div class="best_imgbox">';
     html += '<img src="'+src1+'" class="best_ori_img"/>';

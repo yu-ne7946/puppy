@@ -749,54 +749,57 @@ function initBest() {
     ref.on("child_added", bestMake);
     ref.on("child_removed", bestRev);
     ref.on("child_changed", bestChg);
+    
 }
 initBest();
 
 
 /**생성 */
+var bestLen = 5;
 function bestMake(data) {
-    // if(data.key.length <= 5) {
-    var id = data.key;
-    var title = data.val().title;
-    var titlespan =data.val().titlespan;
-    var link = data.val().link;
-    var ori_img = data.val().ori_img;
-    var ho_img = data.val().ho_img;
-    var ori_price = data.val().ori_price;
-    var dis_price = data.val().dis_price;
-    var src1 = '../images/best/' + data.val().ori_img;
-    var src2 = '../images/best/' + data.val().ho_img;
-    var html = '';
-    html += '<ul class="best_index" id="' + id + '">'
-    html += '<li>'
-    html += '<input type="text" id="index_title" class="ind_title" value="' + title + '" >'
+    if(bestLen > 0) {
+        var id = data.key;
+        var title = data.val().title;
+        var titlespan =data.val().titlespan;
+        var link = data.val().link;
+        var ori_img = data.val().ori_img;
+        var ho_img = data.val().ho_img;
+        var ori_price = data.val().ori_price;
+        var dis_price = data.val().dis_price;
+        var src1 = '../images/best/' + data.val().ori_img;
+        var src2 = '../images/best/' + data.val().ho_img;
+        var html = '';
+        html += '<ul class="best_index" id="' + id + '">'
+        html += '<li>'
+        html += '<input type="text" id="index_title" class="ind_title" value="' + title + '" >'
 
-    if (titlespan) {
-        html += '<input type="text" id="index_title_span" class="ind_titlespan" value="' + titlespan + '" >'
+        if (titlespan != "") {
+            html += '<input type="text" id="index_title_span" class="ind_titlespan" value="' + titlespan + '" >'
+        }
+
+        html += '</li>'
+        html += '<li>';
+        html += '<input type="text" id="index_link" class="ind_link" value="' + link+ '" >'
+        html += '</li>';
+        html += '<li class="clear index_imgli">'
+        html += '<div class="index_imgbox"><img src="' + src1 + '" class="img best_img1"></div>'
+        html += '<input type="text" id="index_or_img" class="ind_orimg_input" value="' + ori_img+ '" placeholder="원래이미지"></li>'
+        html += '<li class="clear index_imgli">'
+        html += '<div class="index_imgbox">'
+        html += '<img src="' + src2 + '"class="img best_img2">'
+        html += '</div>'
+        html += '<input type="text" id="index_or_img" class="ind_hoimg_input" value="' + ho_img + '" placeholder="호버 이미지">'
+        html += '</li>'
+        html += '<li class="index_prili">원래가격<input type="text" id="index_or_price" class="index_orprice" value="' + ori_price + '" placeholder="Original price"></li>'
+        html += '<li class="index_prili">할인가격<input type="text" id="index_or_price" class="index_hoprice" value="' + dis_price + '" placeholder="Discount price"></li>'
+        html += '<li class="index_bt">'
+        html += '<button class="index_del" onclick="bestDel(this);">삭제</button>'
+        html += '<button class="index_re" onclick="bestUp(this);">수정</button>'
+        html += '</li>'
+        html += '</ul>'
+        $(".best_init").append(html);
+        bestLen--;
     }
-
-    html += '</li>'
-    html += '<li>';
-    html += '<input type="text" id="index_link" class="ind_link" value="' + link+ '" >'
-    html += '</li>';
-    html += '<li class="clear index_imgli">'
-    html += '<div class="index_imgbox"><img src="' + src1 + '" class="img"></div>'
-    html += '<input type="text" id="index_or_img" class="ind_orimg_input" value="' + ori_img+ '" placeholder="원래이미지"></li>'
-    html += '<li class="clear index_imgli">'
-    html += '<div class="index_imgbox">'
-    html += '<img src="' + src2 + '"class="img">'
-    html += '</div>'
-    html += '<input type="text" id="index_or_img" class="ind_hoimg_input" value="' + ho_img + '" placeholder="호버 이미지">'
-    html += '</li>'
-    html += '<li class="index_prili">원래가격<input type="text" id="index_or_price" class="index_orprice" value="' + ori_price + '" placeholder="Original price"></li>'
-    html += '<li class="index_prili">할인가격<input type="text" id="index_or_price" class="index_hoprice" value="' + dis_price + '" placeholder="Discount price"></li>'
-    html += '<li class="index_bt">'
-    html += '<button class="index_del" onclick="bestDel(this);">삭제</button>'
-    html += '<button class="index_re" onclick="bestUp(this);">수정</button>'
-    html += '</li>'
-    html += '</ul>'
-    $(".best_init").append(html);
-    // }
 }
 
 
@@ -804,13 +807,13 @@ $("#best_save").click(function () {
     ref = db.ref("root/best/");
     var title = $("#best_title").val();
     var titlespan = $("#best_titlespan").val();
+    if(titlespan == "" || titlespan==null || titlespan==undefined) titlespan = '';
     var link = $("#best_link").val();
     var ori_img = $("#best_photo1").val();
     var ho_img = $("#best_photo2").val();
     var ori_price = $("#best_ori_price").val();
     var dis_price = $("#best_dis_price").val();
-    if (title == "" | link == "" | ori_img == "" | ho_img == "" | ori_price == "" |
-        dis_price == "") {
+    if (title == "" || link == "" || ori_img == "" || ho_img == "" || ori_price == "" || dis_price == "") {
         alert("내용을 입력하세요");
         return false;
     } else {
@@ -886,8 +889,10 @@ function bestChg(data) {
     var ul = $("#" + id);
     var ori_img = data.val().ori_img;
     var ho_img = data.val().ho_img;
-	$(".ind_orimg_input", ul).attr("src", "../images/best/" + ori_img);
-    $(".ind_hoimg_input", ul).attr("src", "../images/best/" + ho_img);
+	$(".best_img1", ul).attr("src", "../images/best/" + ori_img);
+    $(".best_img2", ul).attr("src", "../images/best/" + ho_img);
+    $(".ind_orimg_input", ul).val(ori_img);
+    $(".ind_hoimg_input", ul).val(ho_img);
 	alert("수정되었습니다.");
 }
 
@@ -895,7 +900,8 @@ function bestUp(obj) {
     var ul = $(obj).parent().parent();
     var id = ul.attr("id");
     var title = $(".ind_title",ul).val();
-    var titlespan = $(".ind_titlespan",ul).val();
+    if($(".ind_titlespan",ul).val() == undefined) var titlespan = '';
+    else var titlespan = $(".ind_titlespan",ul).val();
     var link = $(".ind_link",ul).val();
     var ori_img = $(".ind_orimg_input",ul).val();
     var ho_img = $(".ind_hoimg_input",ul).val();
