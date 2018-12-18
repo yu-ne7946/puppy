@@ -80,7 +80,7 @@ function homeMake(data) {
     html += '<li class="case_li">';
     html += '<input type="text"  class="case_input case_in_link" placeholder="링크" value="' + data.val().link + '">';
     html += '</li>';
-    html += '<li class="case_time">' + data.val().wdate + '</li>';
+    html += '<li class="case_time">' + timeConverter(data.val().wdate) + '</li>';
     html += '<li class="case_bt_li">';
     html += '<button class="case_bt home_del" onclick="homeDel(this);">삭제</button>';
     html += '<button class="case_bt home_re"  onclick="homeUp(this);">수정</button>';
