@@ -772,11 +772,11 @@ function bestMake(data) {
         html += '<ul class="best_index" id="' + id + '">'
         html += '<li>'
         html += '<input type="text" id="index_title" class="ind_title" value="' + title + '" >'
-
+/* 
         if (titlespan != "") {
             html += '<input type="text" id="index_title_span" class="ind_titlespan" value="' + titlespan + '" >'
-        }
-
+        } */
+        html += '<input type="text" id="index_title_span" class="ind_titlespan" value="' + titlespan + '">';
         html += '</li>'
         html += '<li>';
         html += '<input type="text" id="index_link" class="ind_link" value="' + link+ '" >'
@@ -889,10 +889,16 @@ function bestChg(data) {
     var ul = $("#" + id);
     var ori_img = data.val().ori_img;
     var ho_img = data.val().ho_img;
+    var ori_price = data.val().ori_price;
+    var dis_price = data.val().dis_price;
 	$(".best_img1", ul).attr("src", "../images/best/" + ori_img);
     $(".best_img2", ul).attr("src", "../images/best/" + ho_img);
     $(".ind_orimg_input", ul).val(ori_img);
     $(".ind_hoimg_input", ul).val(ho_img);
+    $().val()
+    $(".index_orprice",ul).val(ori_price);
+    $(".index_hoprice",ul).val(dis_price);
+
 	alert("수정되었습니다.");
 }
 

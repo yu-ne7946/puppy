@@ -63,8 +63,9 @@ border-top:1px solid #ccc; border-bottom:1px solid #ccc; box-sizing:border-box; 
 .best_photo_box, .best_price_box{float:left;}
 
 .best_title_box {width:100%; }
-.best_title_box input[type].be_title{width:60%; box-sizing: border-box;}
-.best_title_box input[type].be_link{width:35%; box-sizing:border-box;}
+.best_title_box input[type].be_title{width:100%; box-sizing: border-box; margin-bottom:1%;}
+.best_title_box input[type].be_link{width:100%; box-sizing:border-box;}
+.be_link{width:100%;}
 
 .best_photo_box {width:30%;}
 .best_photo_box input[type]{width:90%;}
@@ -76,8 +77,9 @@ border-top:1px solid #ccc; border-bottom:1px solid #ccc; box-sizing:border-box; 
 .best_init ul{width:18%;margin-right:2.5%; border:1px solid #333; box-sizing:border-box; float:left; padding:1% 0;}
 .best_init ul:last-child{margin-right:0;}
 .best_init ul li{width:90%; margin:auto; padding-bottom:2%;}
-.ind_title{width:70%}
-.ind_link{width:20%;}
+.ind_title{width:100%; margin-bottom:1%;}
+.ind_titlespan{width:100%}
+.ind_link{width:100%;}
 .index_imgbox{float:left; width:40%;}
 .ind_orimg_input{margin-top:10%;}
 .ind_hoimg_input{margin-top:10%;}
